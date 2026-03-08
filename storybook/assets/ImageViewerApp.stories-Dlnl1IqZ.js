@@ -1,0 +1,40 @@
+import{j as i}from"./iframe-U9dC9Cor.js";import{I as a,m as o}from"./Window-DddBGFMP.js";import{A as p}from"./AppWithPickerOpen-XTSOsURC.js";import"./preload-helper-D1UD9lgW.js";import"./index-SsivZmaR.js";import"./Transition-CkLLtgT1.js";import"./VscIcon-B9mYMaw9.js";import"./useDynamicIcon-B2vFVd2O.js";import"./desktopStore-BmrVKCSf.js";import"./apps-C9KmvF_j.js";import"./sortNodes-k3UPHZY_.js";import"./SettingsApp-CnaCGwC0.js";import"./AppIcon-CBbNJwn9.js";import"./WallpaperSettings-CEN_iOqy.js";import"./useResolvedUrl-97qfKVBS.js";import"./FilePickerApp-CDq1H7ZD.js";import"./FileIcon-hHMFxt38.js";import"./Breadcrumbs-BwM3e-g7.js";import"./polymorphic-factory-DyzbqoLZ.js";import"./Text-Dtnqn3Bo.js";import"./is-element-Bi8acN8O.js";import"./UnstyledButton-VKVflIkY.js";import"./useTranslation-Cvul1C8x.js";import"./Group-C3mkPUBX.js";import"./Button-BlMBDGXk.js";import"./Loader-DElCIoZg.js";import"./TextInput-DiqM4NS-.js";import"./InputBase-CpR35aXm.js";import"./use-id-CiapeEnC.js";import"./use-resolved-styles-api-BuMwp7JB.js";import"./CloseButton-BWBrjiZx.js";import"./SettingsSection-C0qAlHrY.js";import"./Stack-Cm-oUvcw.js";import"./wallpaper-aTrUdOVb.js";import"./SegmentedControl-DqZHiGwc.js";import"./to-int-PQE0s6ay.js";import"./use-merged-ref-WYOYf04b.js";import"./use-uncontrolled-B4fczV8L.js";import"./AppearanceSettings-DlKuS_Ox.js";import"./ColorPicker-1YlEDuVv.js";import"./Colors-CBaN3Y8G.js";import"./clamp-DTmYCdls.js";import"./Popover-BF1G8HQF.js";import"./OptionalPortal-CIlUmR1F.js";import"./DirectionProvider-Dir_r4eo.js";import"./Slider-DVFU4X73.js";import"./LauncherSettings-C9WLam6Z.js";import"./ScrollArea-BOw2r3pW.js";import"./SimpleGrid-BAuYoQRy.js";import"./FontSettings-Ccxa0xFL.js";import"./Paper-ByTz6eXy.js";import"./LanguageSettings-DtVijbTS.js";import"./ResetSettings-DJbkNdbe.js";import"./useWindowButtonRegistry-rcD5OXVH.js";import"./useAnimationDuration-CI8m7S-H.js";import"./Animations-67kTFacj.js";import"./Menu-BnSD2lCt.js";import"./AccordionChevron-CAXHsCT_.js";import"./CalendarApp-fq-CuZuq.js";import"./FilesApp-Gd4NNyLp.js";import"./useOpenApp-CpsIN7bm.js";import"./useAdaptiveDimensions-D5xa8B8u.js";import"./FolderTree-CP82asWx.js";import"./FileList-wSI4Lc67.js";import"./PdfApp-7qWbdqc-.js";import"./StorybookApp-CHqs-kNk.js";import"./iconBase-BTUdkooo.js";import"./CreateItemApp--Tfsih1Q.js";import"./IconColorPicker-C_hxnPh3.js";import"./Icons-2dF7msl8.js";import"./Modal-h5Xev0xu.js";const Ne={title:"Apps/ImageViewerApp",component:a,parameters:{layout:"fullscreen"}},n={id:"folder-images",name:"Images",type:"folder",parentId:null,children:["file-wallpaper","file-wallpaper2"],createdAt:new Date,updatedAt:new Date},s={id:"file-wallpaper",name:"wallpaper.jpg",type:"file",parentId:"folder-images",content:"",mimeType:"image/jpeg",url:"/storybook/Images/wallpaper.jpg",createdAt:new Date,updatedAt:new Date},c={id:"file-wallpaper2",name:"wallpaper2.jpg",type:"file",parentId:"folder-images",content:"",mimeType:"image/jpeg",url:"/storybook/Images/wallpaper2.jpg",createdAt:new Date,updatedAt:new Date},m=[n,s,c],e={render:()=>i.jsx(p,{win:o({id:"win-image-viewer",title:"Image Viewer",content:"image-viewer",fcIcon:"FcPicture",width:700,height:520,x:0,y:0,contentData:{src:"/storybook/Images/wallpaper.jpg"}}),fsNodes:m})},t={render:()=>i.jsx(p,{win:o({id:"win-image-viewer-empty",title:"Image Viewer",content:"image-viewer",fcIcon:"FcPicture",width:700,height:520,x:0,y:0}),fsNodes:m})},r={render:()=>i.jsx(p,{win:o({id:"win-image-viewer-small",title:"Image Viewer",content:"image-viewer",fcIcon:"FcPicture",width:300,height:200,x:0,y:0,contentData:{src:"/storybook/Images/wallpaper.jpg"}}),fsNodes:m})};e.parameters={...e.parameters,docs:{...e.parameters?.docs,source:{originalSource:`{
+  render: () => <AppWithPickerOpen win={makeWindow({
+    id: 'win-image-viewer',
+    title: 'Image Viewer',
+    content: 'image-viewer',
+    fcIcon: 'FcPicture',
+    width: 700,
+    height: 520,
+    x: 0,
+    y: 0,
+    contentData: {
+      src: \`\${import.meta.env.BASE_URL}Images/wallpaper.jpg\`
+    }
+  })} fsNodes={fsNodes} />
+}`,...e.parameters?.docs?.source}}};t.parameters={...t.parameters,docs:{...t.parameters?.docs,source:{originalSource:`{
+  render: () => <AppWithPickerOpen win={makeWindow({
+    id: 'win-image-viewer-empty',
+    title: 'Image Viewer',
+    content: 'image-viewer',
+    fcIcon: 'FcPicture',
+    width: 700,
+    height: 520,
+    x: 0,
+    y: 0
+  })} fsNodes={fsNodes} />
+}`,...t.parameters?.docs?.source}}};r.parameters={...r.parameters,docs:{...r.parameters?.docs,source:{originalSource:`{
+  render: () => <AppWithPickerOpen win={makeWindow({
+    id: 'win-image-viewer-small',
+    title: 'Image Viewer',
+    content: 'image-viewer',
+    fcIcon: 'FcPicture',
+    width: 300,
+    height: 200,
+    x: 0,
+    y: 0,
+    contentData: {
+      src: \`\${import.meta.env.BASE_URL}Images/wallpaper.jpg\`
+    }
+  })} fsNodes={fsNodes} />
+}`,...r.parameters?.docs?.source}}};const Ve=["WithImage","NoImage","SmallWindow"];export{t as NoImage,r as SmallWindow,e as WithImage,Ve as __namedExportsOrder,Ne as default};

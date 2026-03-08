@@ -1,0 +1,1 @@
+import{j as o}from"./iframe-U9dC9Cor.js";const t="_frame_13ufi_1",r={frame:t},s="https://frannunpal.github.io/storybook/",e=()=>o.jsx("iframe",{src:s,className:r.frame,title:"Storybook","aria-label":"Storybook component explorer"});e.__docgenInfo={description:"",methods:[],displayName:"StorybookApp"};export{e as S};

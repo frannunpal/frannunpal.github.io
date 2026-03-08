@@ -1,0 +1,59 @@
+{
+  "folders": ["Desktop", "Documents", "Images", "Games"],
+  "files": [
+    {
+      "name": "CV_2026_English.pdf",
+      "folder": "Desktop",
+      "mimeType": "application/pdf",
+      "url": "Desktop/CV_2026_English.pdf"
+    },
+    {
+      "name": "NotesAppWelcome.md",
+      "folder": "Desktop",
+      "mimeType": "text/markdown",
+      "url": "Desktop/NotesAppWelcome.md"
+    },
+    {
+      "name": "sample-image.png",
+      "folder": "Desktop",
+      "mimeType": "image/png",
+      "url": "Desktop/sample-image.png"
+    },
+    {
+      "name": "wallpaper.jpg",
+      "folder": "Desktop",
+      "mimeType": "image/jpeg",
+      "url": "Desktop/wallpaper.jpg"
+    },
+    {
+      "name": "sample-image.png",
+      "folder": "Images",
+      "mimeType": "image/png",
+      "url": "Images/sample-image.png"
+    },
+    {
+      "name": "wallpaper.jpg",
+      "folder": "Images",
+      "mimeType": "image/jpeg",
+      "url": "Images/wallpaper.jpg"
+    },
+    {
+      "name": "wallpaper2.jpg",
+      "folder": "Images",
+      "mimeType": "image/jpeg",
+      "url": "Images/wallpaper2.jpg"
+    },
+    {
+      "name": "Quick Start – React.pdf",
+      "folder": "Documents",
+      "mimeType": "application/pdf",
+      "url": "Documents/Quick Start – React.pdf"
+    },
+    {
+      "name": "DOOM.jsdos",
+      "folder": "Games",
+      "mimeType": "application/jsdos",
+      "url": "Games/doom.jsdos"
+    }
+  ]
+}

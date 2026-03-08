@@ -1,0 +1,1 @@
+import{r as e,j as s}from"./iframe-U9dC9Cor.js";function a(o){const r=e.createContext(null);return[({children:t,value:n})=>s.jsx(r.Provider,{value:n,children:t}),()=>{const t=e.useContext(r);if(t===null)throw new Error(o);return t}]}const c=e.createContext({dir:"ltr",toggleDirection:()=>{},setDirection:()=>{}});function C(){return e.useContext(c)}export{a as c,C as u};

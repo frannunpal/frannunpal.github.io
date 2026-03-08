@@ -1,0 +1,1 @@
+import{j as e}from"./iframe-U9dC9Cor.js";import{M as n}from"./Menu-BnSD2lCt.js";const i=({x:t,y:o})=>e.jsx(n.Target,{children:e.jsx("div",{"aria-hidden":"true",style:{position:"fixed",left:t,top:o,width:0,height:0,pointerEvents:"none"}})});i.__docgenInfo={description:"",methods:[],displayName:"ContextMenuAnchor"};export{i as C};
