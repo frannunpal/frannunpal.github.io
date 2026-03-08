@@ -1,0 +1,87 @@
+import{j as e}from"./iframe-EBfrZQCs.js";import{m as i,c as t,B as y,a as W,b as S,D as A}from"./Window-BMM5-aU_.js";import{A as n}from"./AppWithPickerOpen-D2nT94cE.js";import{V as o}from"./VscIcon-DeXiUSO-.js";import"./preload-helper-CRsgZnrw.js";import"./index-DSqRWbxz.js";import"./Transition-BwN4kT9j.js";import"./desktopStore-CwB-cdNj.js";import"./apps-B-6LmW0h.js";import"./sortNodes-k3UPHZY_.js";import"./SettingsApp-RiCb2uyT.js";import"./AppIcon-CIm0Tuzm.js";import"./useDynamicIcon-Z1W58oY5.js";import"./WallpaperSettings-Dchblhl8.js";import"./useResolvedUrl-BzH8qatV.js";import"./FilePickerApp-BzKG2RfD.js";import"./FileIcon-DqfSu0yB.js";import"./Breadcrumbs-2M9hM8Oo.js";import"./polymorphic-factory-CitjaWgV.js";import"./Text-CmGhEjeA.js";import"./is-element-CsCIQYcM.js";import"./UnstyledButton-CYZ0_6oA.js";import"./useTranslation-CfQsQjN6.js";import"./Group-Dyp7zqJW.js";import"./Button-a3-AlcbN.js";import"./Loader-DqVMSaTN.js";import"./TextInput-DpB0r6sn.js";import"./InputBase-RM_eedGx.js";import"./use-id-C2-QLSHp.js";import"./use-resolved-styles-api-D94bfHEu.js";import"./CloseButton-NjFIAN3y.js";import"./SettingsSection-B9Pnxiwk.js";import"./Stack-DKu2hy6J.js";import"./wallpaper-DBrFTLr9.js";import"./SegmentedControl-B0OvewRX.js";import"./to-int-PQE0s6ay.js";import"./use-merged-ref-D8gqU3v0.js";import"./use-uncontrolled-DTG28c8l.js";import"./AppearanceSettings-kIfb7aOe.js";import"./ColorPicker-BNhTkLZA.js";import"./Colors-BO33xmnN.js";import"./clamp-DTmYCdls.js";import"./Popover-BWv2rWGU.js";import"./OptionalPortal-CTDSEAQA.js";import"./DirectionProvider-BPMG83_F.js";import"./Slider-DCLzLOfr.js";import"./LauncherSettings-6Ggc41e8.js";import"./ScrollArea-ImpI-HQl.js";import"./SimpleGrid-CbfQTBaj.js";import"./FontSettings-CoA2Gphu.js";import"./Paper-DPGHG3Io.js";import"./LanguageSettings-BbqLWCR-.js";import"./ResetSettings-DFc4GJkS.js";import"./useWindowButtonRegistry-DScb9k0T.js";import"./useAnimationDuration-HfCRhMm2.js";import"./Animations-67kTFacj.js";import"./Menu-BFRMS7jO.js";import"./AccordionChevron-C9wk85QK.js";import"./CalendarApp-Tsl9Citj.js";import"./FilesApp-BwUBXD05.js";import"./useOpenApp-CMsSzYiX.js";import"./useAdaptiveDimensions-voWJNl4G.js";import"./FolderTree-BDvu52Ky.js";import"./FileList-Cqv6CUYL.js";import"./PdfApp-1HiyxDpN.js";import"./StorybookApp-zD8H1WDp.js";import"./iconBase-Cac3eC1y.js";import"./CreateItemApp-CuY02xOf.js";import"./IconColorPicker-DI7Tg9qW.js";import"./Icons-2dF7msl8.js";import"./Modal-7epdup7-.js";const D={id:"folder-notes",name:"Notes",type:"folder",parentId:null,children:["file-welcome","file-todo"],createdAt:new Date,updatedAt:new Date},p={id:"file-welcome",name:"welcome.md",type:"file",parentId:"folder-notes",content:`# Welcome to NotesApp
+
+This is a **markdown** editor powered by [TipTap](https://tiptap.dev).
+
+## Features
+
+- Rich text editing
+- *Italic*, **bold**, ~~strikethrough~~
+- \`inline code\` and code blocks
+- Bullet and ordered lists
+- Blockquotes
+
+> Write something great today.
+`,mimeType:"text/markdown",url:void 0,createdAt:new Date,updatedAt:new Date},b={id:"file-todo",name:"todo.md",type:"file",parentId:"folder-notes",content:`# TODO
+
+- [ ] Buy groceries
+- [ ] Write documentation
+- [x] Set up NotesApp
+`,mimeType:"text/markdown",url:void 0,createdAt:new Date,updatedAt:new Date},a=[D,p,b],$=({isDirty:m,canUndo:h,canRedo:f,isBold:u,isItalic:x,isStrike:w,isCode:g,isH1:N,isH2:j,isBulletList:I,isOrderedList:k,isBlockquote:B,isCodeBlock:v})=>e.jsxs("div",{className:t.container,children:[e.jsxs("div",{className:t.toolbar,role:"toolbar","aria-label":"Text formatting",children:[e.jsx("button",{className:`${t.toolbarBtn} ${u?t.active:""}`,disabled:!1,title:"Bold","aria-label":"Bold",children:e.jsx(o,{name:"VscBold"})}),e.jsx("button",{className:`${t.toolbarBtn} ${x?t.active:""}`,disabled:!1,title:"Italic","aria-label":"Italic",children:e.jsx(o,{name:"VscItalic"})}),e.jsx("button",{className:`${t.toolbarBtn} ${w?t.active:""}`,disabled:!1,title:"Strikethrough","aria-label":"Strikethrough",children:e.jsx(y,{name:"BiStrikethrough"})}),e.jsx("button",{className:`${t.toolbarBtn} ${g?t.active:""}`,disabled:!1,title:"Inline code","aria-label":"Inline code",children:e.jsx(o,{name:"VscCode"})}),e.jsx("span",{className:t.separator}),e.jsx("button",{className:`${t.toolbarBtn} ${N?t.active:""}`,disabled:!1,title:"Heading 1","aria-label":"Heading 1",children:e.jsx(W,{})}),e.jsx("button",{className:`${t.toolbarBtn} ${j?t.active:""}`,disabled:!1,title:"Heading 2","aria-label":"Heading 2",children:e.jsx(S,{})}),e.jsx("span",{className:t.separator}),e.jsx("button",{className:`${t.toolbarBtn} ${I?t.active:""}`,disabled:!1,title:"Bullet list","aria-label":"Bullet list",children:e.jsx(o,{name:"VscListUnordered"})}),e.jsx("button",{className:`${t.toolbarBtn} ${k?t.active:""}`,disabled:!1,title:"Ordered list","aria-label":"Ordered list",children:e.jsx(o,{name:"VscListOrdered"})}),e.jsx("span",{className:t.separator}),e.jsx("button",{className:`${t.toolbarBtn} ${B?t.active:""}`,disabled:!1,title:"Blockquote","aria-label":"Blockquote",children:e.jsx(o,{name:"VscQuote"})}),e.jsx("button",{className:`${t.toolbarBtn} ${v?t.active:""}`,disabled:!1,title:"Code block","aria-label":"Code block",children:e.jsx(o,{name:"VscTerminal"})}),e.jsx("button",{className:t.toolbarBtn,disabled:!1,title:"Horizontal rule","aria-label":"Horizontal rule",children:e.jsx(o,{name:"VscHorizontalRule"})}),e.jsx("span",{className:t.separator}),e.jsx("button",{className:t.toolbarBtn,disabled:!h,title:"Undo","aria-label":"Undo",children:e.jsx(o,{name:"VscDiscard"})}),e.jsx("button",{className:t.toolbarBtn,disabled:!f,title:"Redo","aria-label":"Redo",children:e.jsx(o,{name:"VscRedo"})}),m&&e.jsx("span",{className:t.dirtyIndicator,title:"Unsaved changes",children:e.jsx(A,{})})]}),e.jsx("div",{className:t.editorContent,style:{display:"flex",alignItems:"center",justifyContent:"center",color:"var(--mantine-color-dimmed)",fontSize:14},children:"Use the controls in the Controls panel to toggle toolbar states"})]}),Je={title:"Apps/NotesApp",parameters:{layout:"fullscreen"},argTypes:{isDirty:{control:"boolean",description:"Shows the FcSynchronize unsaved indicator"},canUndo:{control:"boolean",description:"Enable Undo button"},canRedo:{control:"boolean",description:"Enable Redo button"},isBold:{control:"boolean",description:"Bold text active state"},isItalic:{control:"boolean",description:"Italic text active state"},isStrike:{control:"boolean",description:"Strikethrough text active state"},isCode:{control:"boolean",description:"Inline code active state"},isH1:{control:"boolean",description:"Heading 1 active state"},isH2:{control:"boolean",description:"Heading 2 active state"},isBulletList:{control:"boolean",description:"Bullet list active state"},isOrderedList:{control:"boolean",description:"Ordered list active state"},isBlockquote:{control:"boolean",description:"Blockquote active state"},isCodeBlock:{control:"boolean",description:"Code block active state"}},args:{isDirty:!1,canUndo:!1,canRedo:!1,isBold:!1,isItalic:!1,isStrike:!1,isCode:!1,isH1:!1,isH2:!1,isBulletList:!1,isOrderedList:!1,isBlockquote:!1,isCodeBlock:!1}},s={render:()=>e.jsx(n,{win:i({id:"win-notes",title:"Notepad",content:"notepad",fcIcon:"FcEditImage",width:700,height:520,x:0,y:0}),fsNodes:a})},r={render:()=>e.jsx(n,{win:i({id:"win-notes-content",title:"Notepad",content:"notepad",fcIcon:"FcEditImage",width:700,height:520,x:0,y:0,contentData:{initialContent:p.content??""}}),fsNodes:a})},l={render:()=>e.jsx(n,{win:i({id:"win-notes-small",title:"Notepad",content:"notepad",fcIcon:"FcEditImage",width:360,height:280,x:0,y:0,contentData:{initialContent:b.content??""}}),fsNodes:a})},c={render:()=>e.jsx(n,{win:i({id:"win-notes-open",title:"welcome.md",content:"notepad",fcIcon:"FcEditImage",width:700,height:520,x:0,y:0,contentData:{fileId:"file-welcome",initialName:"welcome.md",initialContent:p.content??""}}),fsNodes:a})},d={render:m=>e.jsx(n,{win:i({id:"win-notes-controls",title:"NotesApp - Toolbar States",content:"notepad",fcIcon:"FcEditImage",width:700,height:520,x:0,y:0}),fsNodes:a,children:e.jsx($,{...m})})};s.parameters={...s.parameters,docs:{...s.parameters?.docs,source:{originalSource:`{
+  render: () => <AppWithPickerOpen win={makeWindow({
+    id: 'win-notes',
+    title: 'Notepad',
+    content: 'notepad',
+    fcIcon: 'FcEditImage',
+    width: 700,
+    height: 520,
+    x: 0,
+    y: 0
+  })} fsNodes={fsNodes} />
+}`,...s.parameters?.docs?.source}}};r.parameters={...r.parameters,docs:{...r.parameters?.docs,source:{originalSource:`{
+  render: () => <AppWithPickerOpen win={makeWindow({
+    id: 'win-notes-content',
+    title: 'Notepad',
+    content: 'notepad',
+    fcIcon: 'FcEditImage',
+    width: 700,
+    height: 520,
+    x: 0,
+    y: 0,
+    contentData: {
+      initialContent: fileWelcome.content ?? ''
+    }
+  })} fsNodes={fsNodes} />
+}`,...r.parameters?.docs?.source}}};l.parameters={...l.parameters,docs:{...l.parameters?.docs,source:{originalSource:`{
+  render: () => <AppWithPickerOpen win={makeWindow({
+    id: 'win-notes-small',
+    title: 'Notepad',
+    content: 'notepad',
+    fcIcon: 'FcEditImage',
+    width: 360,
+    height: 280,
+    x: 0,
+    y: 0,
+    contentData: {
+      initialContent: fileTodo.content ?? ''
+    }
+  })} fsNodes={fsNodes} />
+}`,...l.parameters?.docs?.source}}};c.parameters={...c.parameters,docs:{...c.parameters?.docs,source:{originalSource:`{
+  render: () => <AppWithPickerOpen win={makeWindow({
+    id: 'win-notes-open',
+    title: 'welcome.md',
+    content: 'notepad',
+    fcIcon: 'FcEditImage',
+    width: 700,
+    height: 520,
+    x: 0,
+    y: 0,
+    contentData: {
+      fileId: 'file-welcome',
+      initialName: 'welcome.md',
+      initialContent: fileWelcome.content ?? ''
+    }
+  })} fsNodes={fsNodes} />
+}`,...c.parameters?.docs?.source}}};d.parameters={...d.parameters,docs:{...d.parameters?.docs,source:{originalSource:`{
+  render: args => <AppWithPickerOpen win={makeWindow({
+    id: 'win-notes-controls',
+    title: 'NotesApp - Toolbar States',
+    content: 'notepad',
+    fcIcon: 'FcEditImage',
+    width: 700,
+    height: 520,
+    x: 0,
+    y: 0
+  })} fsNodes={fsNodes}>
+      <MockToolbar {...args} />
+    </AppWithPickerOpen>
+}`,...d.parameters?.docs?.source}}};const Ke=["Default","WithContent","SmallWindow","WithOpenFile","ToolbarStates"];export{s as Default,l as SmallWindow,d as ToolbarStates,r as WithContent,c as WithOpenFile,Ke as __namedExportsOrder,Je as default};

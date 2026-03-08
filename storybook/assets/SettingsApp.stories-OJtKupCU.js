@@ -1,0 +1,12 @@
+import{j as o}from"./iframe-EBfrZQCs.js";import{S as i}from"./SettingsApp-RiCb2uyT.js";import"./preload-helper-CRsgZnrw.js";import"./AppIcon-CIm0Tuzm.js";import"./useDynamicIcon-Z1W58oY5.js";import"./desktopStore-CwB-cdNj.js";import"./apps-B-6LmW0h.js";import"./sortNodes-k3UPHZY_.js";import"./WallpaperSettings-Dchblhl8.js";import"./useResolvedUrl-BzH8qatV.js";import"./FilePickerApp-BzKG2RfD.js";import"./FileIcon-DqfSu0yB.js";import"./Breadcrumbs-2M9hM8Oo.js";import"./polymorphic-factory-CitjaWgV.js";import"./Text-CmGhEjeA.js";import"./is-element-CsCIQYcM.js";import"./UnstyledButton-CYZ0_6oA.js";import"./useTranslation-CfQsQjN6.js";import"./Group-Dyp7zqJW.js";import"./Button-a3-AlcbN.js";import"./Loader-DqVMSaTN.js";import"./Transition-BwN4kT9j.js";import"./index-DSqRWbxz.js";import"./TextInput-DpB0r6sn.js";import"./InputBase-RM_eedGx.js";import"./use-id-C2-QLSHp.js";import"./use-resolved-styles-api-D94bfHEu.js";import"./CloseButton-NjFIAN3y.js";import"./SettingsSection-B9Pnxiwk.js";import"./Stack-DKu2hy6J.js";import"./wallpaper-DBrFTLr9.js";import"./SegmentedControl-B0OvewRX.js";import"./to-int-PQE0s6ay.js";import"./use-merged-ref-D8gqU3v0.js";import"./use-uncontrolled-DTG28c8l.js";import"./AppearanceSettings-kIfb7aOe.js";import"./ColorPicker-BNhTkLZA.js";import"./Colors-BO33xmnN.js";import"./clamp-DTmYCdls.js";import"./Popover-BWv2rWGU.js";import"./OptionalPortal-CTDSEAQA.js";import"./DirectionProvider-BPMG83_F.js";import"./Slider-DCLzLOfr.js";import"./LauncherSettings-6Ggc41e8.js";import"./ScrollArea-ImpI-HQl.js";import"./SimpleGrid-CbfQTBaj.js";import"./FontSettings-CoA2Gphu.js";import"./Paper-DPGHG3Io.js";import"./LanguageSettings-BbqLWCR-.js";import"./ResetSettings-DFc4GJkS.js";const rr={title:"Settings/SettingsApp",component:i,parameters:{layout:"fullscreen"}},r={decorators:[t=>o.jsx("div",{style:{width:800,height:580,border:"1px solid rgba(128,128,128,0.2)",borderRadius:8,overflow:"hidden",background:"var(--mantine-color-body)"},children:o.jsx(t,{})})]};r.parameters={...r.parameters,docs:{...r.parameters?.docs,source:{originalSource:`{
+  decorators: [Story => <div style={{
+    width: 800,
+    height: 580,
+    border: '1px solid rgba(128,128,128,0.2)',
+    borderRadius: 8,
+    overflow: 'hidden',
+    background: 'var(--mantine-color-body)'
+  }}>
+        <Story />
+      </div>]
+}`,...r.parameters?.docs?.source}}};const or=["Default"];export{r as Default,or as __namedExportsOrder,rr as default};
