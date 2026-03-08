@@ -1,0 +1,1 @@
+const s=["VscFolder","VscFolderOpened","VscHome","VscServer","VscDatabase","VscBook","VscMail","VscGithub","VscCloud","VscLock","VscSettingsGear","VscStar","VscHeart","VscMusic","VscCamera","VscArchive"];export{s as P};
