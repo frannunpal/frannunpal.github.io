@@ -1,0 +1,1 @@
+import{Y as e}from"./ExternalLinkApp-B-prl6DO.js";var t={frame:`_frame_13ufi_1`},n=e(),r=`https://frannunpal.github.io/storybook/`,i=()=>(0,n.jsx)(`iframe`,{src:r,className:t.frame,title:`Storybook`,"aria-label":`Storybook component explorer`});export{i as t};

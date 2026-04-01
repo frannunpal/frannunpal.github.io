@@ -1,0 +1,1 @@
+import"./ExternalLinkApp-B-prl6DO.js";import"./app-dos-V_SyMYQc.js";import"./app-menuedit-CnqoJe4z.js";import"./app-calendar-B9PedHol.js";import"./app-device-info-2-ZQMNJL.js";import{t as e}from"./app-notepad-BL41q9sm.js";export{e as NotesMenuBar};
