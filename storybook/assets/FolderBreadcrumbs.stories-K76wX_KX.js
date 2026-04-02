@@ -1,0 +1,11 @@
+import{n as e,o as t}from"./chunk-zsgVPwQN.js";import{Wt as n,en as r}from"./iframe-IBNi5Fts.js";import{n as i,t as a}from"./FolderBreadcrumbs-CbNqYut6.js";var o,s,c,l,u,d,f,p=e((()=>{o=new Date,s={id:`folder-desktop`,name:`Desktop`,type:`folder`,parentId:null,children:[`folder-projects`],createdAt:o,updatedAt:o},c={id:`folder-documents`,name:`Documents`,type:`folder`,parentId:null,children:[`folder-work`],createdAt:o,updatedAt:o},l={id:`folder-projects`,name:`Projects`,type:`folder`,parentId:`folder-desktop`,children:[`folder-react-app`],createdAt:o,updatedAt:o},u={id:`folder-work`,name:`Work`,type:`folder`,parentId:`folder-documents`,children:[],createdAt:o,updatedAt:o},d={id:`folder-react-app`,name:`React App`,type:`folder`,parentId:`folder-projects`,children:[],createdAt:o,updatedAt:o},f=[s,c,l,u,d]})),m,h,g,_,v,y,b;e((()=>{m=t(r(),1),i(),p(),h=n(),g={title:`Shared/FolderPicker/FolderBreadcrumbs`,component:a,parameters:{layout:`centered`},argTypes:{currentFolderId:{control:`select`,options:[null,`folder-desktop`,`folder-documents`,`folder-projects`,`folder-work`,`folder-react-app`],description:`Currently active folder ID`}}},_=({currentFolderId:e})=>{let[t,n]=(0,m.useState)(e);return(0,h.jsx)(a,{currentFolderId:t,fsNodes:f,onNavigate:n})},v={args:{currentFolderId:null},render:e=>(0,h.jsx)(_,{currentFolderId:e.currentFolderId??null})},y={args:{currentFolderId:`folder-react-app`},render:e=>(0,h.jsx)(_,{currentFolderId:e.currentFolderId??null})},v.parameters={...v.parameters,docs:{...v.parameters?.docs,source:{originalSource:`{
+  args: {
+    currentFolderId: null
+  },
+  render: args => <InteractiveWrapper currentFolderId={args.currentFolderId ?? null} />
+}`,...v.parameters?.docs?.source}}},y.parameters={...y.parameters,docs:{...y.parameters?.docs,source:{originalSource:`{
+  args: {
+    currentFolderId: 'folder-react-app'
+  },
+  render: args => <InteractiveWrapper currentFolderId={args.currentFolderId ?? null} />
+}`,...y.parameters?.docs?.source}}},b=[`Root`,`Nested`]}))();export{y as Nested,v as Root,b as __namedExportsOrder,g as default};
