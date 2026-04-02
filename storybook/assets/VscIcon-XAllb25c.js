@@ -1,0 +1,1 @@
+import{n as e}from"./chunk-zsgVPwQN.js";import{a as t}from"./useDynamicIcon-D98gjaUI.js";import{t as n}from"./useVscIcon-DDREknwE.js";var r,i=e((()=>{n(),r=({name:e,size:n=20,color:r})=>t(e,{size:n,color:r})??null}));export{i as n,r as t};
