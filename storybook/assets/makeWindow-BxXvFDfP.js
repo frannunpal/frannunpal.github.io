@@ -1,0 +1,1 @@
+import{n as e}from"./chunk-zsgVPwQN.js";var t,n=e((()=>{t=(e={})=>({id:`${e.content??`notepad`}-story`,title:`Test Window`,content:`notepad`,x:100,y:100,width:800,height:600,minWidth:200,minHeight:150,isOpen:!0,state:`normal`,zIndex:1,...e})}));export{t as n,n as t};

@@ -1,0 +1,1 @@
+import{n as e}from"./chunk-zsgVPwQN.js";function t(e,t){return t?[...e,{type:`dirty-indicator`}]:e}var n=e((()=>{}));export{n,t};
