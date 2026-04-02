@@ -1,0 +1,1 @@
+import{t as e}from"./app-notepad-BdES0Pgr.js";export{e as NotesMenuBar};
