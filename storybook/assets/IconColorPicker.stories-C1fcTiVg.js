@@ -1,0 +1,3 @@
+import{n as e,o as t}from"./chunk-zsgVPwQN.js";import{Hn as n,Qn as r,i,r as a}from"./iframe-XkA7XzrH.js";var o,s,c,l,u,d;e((()=>{o=t(r(),1),i(),s=n(),c={title:`Shared/IconColorPicker`,component:a,parameters:{layout:`centered`}},l=()=>{let[e,t]=(0,o.useState)(`VscFolder`),[n,r]=(0,o.useState)(`#228be6`);return(0,s.jsx)(`div`,{style:{width:340,padding:16,background:`var(--mantine-color-body)`,borderRadius:8},children:(0,s.jsx)(a,{selectedIcon:e,selectedColor:n,onIconChange:t,onColorChange:r})})},u={render:()=>(0,s.jsx)(l,{})},u.parameters={...u.parameters,docs:{...u.parameters?.docs,source:{originalSource:`{
+  render: () => <DefaultRender />
+}`,...u.parameters?.docs?.source}}},d=[`Default`]}))();export{u as Default,d as __namedExportsOrder,c as default};
