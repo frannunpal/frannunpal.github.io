@@ -1,0 +1,5 @@
+import{n as e,o as t}from"./chunk-zsgVPwQN.js";import{T as n}from"./SettingsApp-vbjhRR9t.js";import{i as r,r as i}from"./fc-DWsH2LXQ.js";import{Hn as a,Kt as o,Qn as s,_t as c,jt as l,mt as u,t as d}from"./iframe-DcUTR6ED.js";var f,p,m,h,g;e((()=>{f=t(s(),1),d(),r(),p=a(),m={title:`Common components/Launcher`,component:c,argTypes:{fcIcon:{control:`select`,options:Object.keys(i).filter(e=>e.startsWith(`Fc`)).sort()}},parameters:{layout:`fullscreen`},decorators:[(e,{args:t})=>((0,f.useEffect)(()=>{l.setState({windows:[],icons:[],notifications:[]}),n.getState().setLauncherIcon(t.fcIcon??`FcDebian`)},[t.fcIcon]),(0,p.jsx)(o,{children:(0,p.jsxs)(`div`,{style:{height:`100vh`,background:`var(--mantine-color-body)`,display:`flex`,flexDirection:`column`,justifyContent:`flex-end`},children:[(0,p.jsx)(`div`,{style:{flex:1}}),(0,p.jsx)(e,{}),(0,p.jsx)(u,{})]})}))]},h={args:{fcIcon:`FcDebian`}},h.parameters={...h.parameters,docs:{...h.parameters?.docs,source:{originalSource:`{
+  args: {
+    fcIcon: 'FcDebian'
+  }
+}`,...h.parameters?.docs?.source}}},g=[`Default`]}))();export{h as Default,g as __namedExportsOrder,m as default};
