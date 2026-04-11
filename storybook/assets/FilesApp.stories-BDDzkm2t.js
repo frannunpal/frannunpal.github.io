@@ -1,0 +1,19 @@
+import{n as e,o as t}from"./chunk-zsgVPwQN.js";import{br as n,ct as r,lt as i,qt as a,t as o,ur as s}from"./iframe-Cjnod8zE.js";import c,{t as l}from"./FilesApp-iyaWFU-E.js";import{c as u,n as d,s as f,t as p}from"./Storybook-Bd7qHmZZ.js";var m,h,g,_,v,y,b,x,S,C,w,T,E;e((()=>{l(),i(),p(),o(),m=t(n(),1),h=s(),g={title:`Apps/FilesApp`,component:c,parameters:{layout:`fullscreen`}},_=f(),v=({sortMode:e}={})=>((0,m.useEffect)(()=>{e&&a.setState({filesSortMode:e})},[e]),(0,h.jsx)(d,{win:u({title:`Files`,content:`files`,fcIcon:`FcOpenedFolder`,width:700,height:480}),fsNodes:_})),y=({sortMode:e}={})=>((0,m.useEffect)(()=>{e&&a.setState({filesSortMode:e});let t=setTimeout(()=>{a.setState({contextMenu:{x:160,y:120,owner:`files`}})},100);return()=>clearTimeout(t)},[e]),(0,h.jsxs)(h.Fragment,{children:[(0,h.jsx)(d,{win:u({title:`Files`,content:`files`,fcIcon:`FcOpenedFolder`,width:700,height:480}),fsNodes:_}),(0,h.jsx)(r,{owner:`files`,parentId:`folder-documents`,currentPath:`/home/Documents`})]})),b={render:()=>(0,h.jsx)(v,{})},x={render:()=>(0,h.jsx)(d,{win:u({title:`Files`,content:`files`,fcIcon:`FcOpenedFolder`,width:700,height:480}),fsNodes:[]})},S={render:()=>(0,h.jsx)(y,{sortMode:`default`})},C={render:()=>(0,h.jsx)(y,{sortMode:`name-asc`})},w={render:()=>(0,h.jsx)(y,{sortMode:`name-desc`})},T={render:()=>(0,h.jsx)(y,{sortMode:`type`})},b.parameters={...b.parameters,docs:{...b.parameters?.docs,source:{originalSource:`{
+  render: () => <FilesAppWithSort />
+}`,...b.parameters?.docs?.source}}},x.parameters={...x.parameters,docs:{...x.parameters?.docs,source:{originalSource:`{
+  render: () => <AppWithPickerOpen win={makeWindow({
+    title: 'Files',
+    content: 'files',
+    fcIcon: 'FcOpenedFolder',
+    width: 700,
+    height: 480
+  })} fsNodes={[]} />
+}`,...x.parameters?.docs?.source}}},S.parameters={...S.parameters,docs:{...S.parameters?.docs,source:{originalSource:`{
+  render: () => <FilesAppWithContextMenuOpen sortMode="default" />
+}`,...S.parameters?.docs?.source}}},C.parameters={...C.parameters,docs:{...C.parameters?.docs,source:{originalSource:`{
+  render: () => <FilesAppWithContextMenuOpen sortMode="name-asc" />
+}`,...C.parameters?.docs?.source}}},w.parameters={...w.parameters,docs:{...w.parameters?.docs,source:{originalSource:`{
+  render: () => <FilesAppWithContextMenuOpen sortMode="name-desc" />
+}`,...w.parameters?.docs?.source}}},T.parameters={...T.parameters,docs:{...T.parameters?.docs,source:{originalSource:`{
+  render: () => <FilesAppWithContextMenuOpen sortMode="type" />
+}`,...T.parameters?.docs?.source}}},E=[`Default`,`EmptyFolder`,`SortDefault`,`SortNameAsc`,`SortNameDesc`,`SortByType`]}))();export{b as Default,x as EmptyFolder,T as SortByType,S as SortDefault,C as SortNameAsc,w as SortNameDesc,E as __namedExportsOrder,g as default};
