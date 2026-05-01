@@ -1,0 +1,93 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 750 620">
+  <defs>
+    <marker id="a4" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#64748b"/>
+    </marker>
+    <pattern id="g4" width="20" height="20" patternUnits="userSpaceOnUse">
+      <path d="M 20 0 L 0 0 0 20" fill="none" stroke="#1e293b" stroke-width="0.5"/>
+    </pattern>
+  </defs>
+  
+  <rect width="100%" height="100%" fill="#0f172a"/>
+  <rect width="100%" height="100%" fill="url(#g4)"/>
+  
+  <!-- CitiesApp -->
+  <rect x="20" y="15" width="710" height="50" rx="8" fill="rgba(8, 51, 68, 0.3)" stroke="#22d3ee" stroke-width="1.5"/>
+  <text x="375" y="45" fill="white" font-size="12" font-weight="600" text-anchor="middle" font-family="JetBrains Mono, monospace">CitiesApp</text>
+  
+  <!-- MapCanvas3D Container -->
+  <rect x="20" y="85" width="710" height="520" rx="8" fill="rgba(6, 78, 59, 0.15)" stroke="#34d399" stroke-width="1"/>
+  <text x="40" y="110" fill="#34d399" font-size="11" font-weight="500" font-family="JetBrains Mono, monospace">MapCanvas3D</text>
+  
+  <!-- TheatreEditorProvider -->
+  <rect x="40" y="130" width="200" height="60" rx="5" fill="rgba(76, 29, 149, 0.3)" stroke="#a78bfa" stroke-width="1"/>
+  <text x="140" y="155" fill="white" font-size="9" font-weight="500" text-anchor="middle" font-family="JetBrains Mono, monospace">TheatreEditorProvider</text>
+  <text x="140" y="175" fill="#94a3b8" font-size="7" text-anchor="middle" font-family="JetBrains Mono, monospace">null-render · studio init</text>
+  
+  <!-- SceneInspectorLayout -->
+  <rect x="260" y="130" width="200" height="60" rx="5" fill="rgba(8, 51, 68, 0.4)" stroke="#22d3ee" stroke-width="1"/>
+  <text x="360" y="155" fill="white" font-size="9" font-weight="500" text-anchor="middle" font-family="JetBrains Mono, monospace">SceneInspectorLayout</text>
+  <text x="360" y="175" fill="#94a3b8" font-size="7" text-anchor="middle" font-family="JetBrains Mono, monospace">3-column wrapper</text>
+  
+  <!-- Canvas -->
+  <rect x="480" y="130" width="240" height="60" rx="5" fill="rgba(6, 78, 59, 0.4)" stroke="#34d399" stroke-width="1"/>
+  <text x="600" y="155" fill="white" font-size="9" font-weight="500" text-anchor="middle" font-family="JetBrains Mono, monospace">Canvas (R3F)</text>
+  <text x="600" y="175" fill="#94a3b8" font-size="7" text-anchor="middle" font-family="JetBrains Mono, monospace">Three.js renderer</text>
+  
+  <!-- HierarchyPanel -->
+  <rect x="40" y="210" width="180" height="80" rx="4" fill="rgba(251, 146, 60, 0.15)" stroke="#fb923c" stroke-width="1"/>
+  <text x="130" y="235" fill="white" font-size="9" font-weight="500" text-anchor="middle" font-family="JetBrains Mono, monospace">HierarchyPanel</text>
+  <text x="130" y="255" fill="#94a3b8" font-size="7" text-anchor="middle" font-family="JetBrains Mono, monospace">sceneDebugStore</text>
+  <text x="130" y="275" fill="#64748b" font-size="7" text-anchor="middle" font-family="JetBrains Mono, monospace">tree + search + stats</text>
+  
+  <!-- ChildrenWrapper -->
+  <rect x="240" y="210" width="150" height="80" rx="4" fill="rgba(30, 41, 59, 0.6)" stroke="#475569" stroke-width="1"/>
+  <text x="315" y="235" fill="#94a3b8" font-size="9" text-anchor="middle" font-family="JetBrains Mono, monospace">{children}</text>
+  <text x="315" y="255" fill="#64748b" font-size="7" text-anchor="middle" font-family="JetBrains Mono, monospace">Canvas wrapper</text>
+  <text x="315" y="275" fill="#64748b" font-size="7" text-anchor="middle" font-family="JetBrains Mono, monospace">pass-through</text>
+  
+  <!-- RightInspectorPanel -->
+  <rect x="410" y="210" width="180" height="80" rx="4" fill="rgba(59, 130, 246, 0.2)" stroke="#3b82f6" stroke-width="1"/>
+  <text x="500" y="235" fill="white" font-size="9" font-weight="500" text-anchor="middle" font-family="JetBrains Mono, monospace">RightInspectorPanel</text>
+  <text x="500" y="255" fill="#94a3b8" font-size="7" text-anchor="middle" font-family="JetBrains Mono, monospace">Tabs: Inspector | Scene</text>
+  
+  <!-- PropertiesPanel -->
+  <rect x="410" y="310" width="160" height="70" rx="4" fill="rgba(30, 41, 59, 0.5)" stroke="#475569" stroke-width="1"/>
+  <text x="490" y="335" fill="#94a3b8" font-size="8" font-weight="500" text-anchor="middle" font-family="JetBrains Mono, monospace">PropertiesPanel</text>
+  <text x="490" y="355" fill="#64748b" font-size="7" text-anchor="middle" font-family="JetBrains Mono, monospace">position/rotation/scale</text>
+  <text x="490" y="370" fill="#64748b" font-size="7" text-anchor="middle" font-family="JetBrains Mono, monospace">material sliders</text>
+  
+  <!-- ScenePropertiesPanel -->
+  <rect x="590" y="310" width="140" height="70" rx="4" fill="rgba(30, 41, 59, 0.5)" stroke="#475569" stroke-width="1"/>
+  <text x="660" y="335" fill="#94a3b8" font-size="8" font-weight="500" text-anchor="middle" font-family="JetBrains Mono, monospace">ScenePropertiesPanel</text>
+  <text x="660" y="355" fill="#64748b" font-size="7" text-anchor="middle" font-family="JetBrains Mono, monospace">useTheatreValues</text>
+  <text x="660" y="370" fill="#64748b" font-size="7" text-anchor="middle" font-family="JetBrains Mono, monospace">9 Theatre groups</text>
+  
+  <!-- TheatreEditorSheetProvider -->
+  <rect x="480" y="400" width="240" height="50" rx="4" fill="rgba(76, 29, 149, 0.3)" stroke="#a78bfa" stroke-width="1"/>
+  <text x="600" y="425" fill="white" font-size="9" font-weight="500" text-anchor="middle" font-family="JetBrains Mono, monospace">TheatreEditorSheetProvider</text>
+  <text x="600" y="440" fill="#94a3b8" font-size="7" text-anchor="middle" font-family="JetBrains Mono, monospace">Theatre.js sheet context</text>
+  
+  <!-- SceneDebuggerScanner -->
+  <rect x="40" y="480" width="200" height="55" rx="4" fill="rgba(8, 51, 68, 0.4)" stroke="#22d3ee" stroke-width="1"/>
+  <text x="140" y="505" fill="white" font-size="9" font-weight="500" text-anchor="middle" font-family="JetBrains Mono, monospace">SceneDebuggerScanner</text>
+  <text x="140" y="522" fill="#94a3b8" font-size="7" text-anchor="middle" font-family="JetBrains Mono, monospace">populates sceneDebugStore</text>
+  
+  <!-- BoundingBoxHelper -->
+  <rect x="260" y="480" width="200" height="55" rx="4" fill="rgba(8, 51, 68, 0.4)" stroke="#22d3ee" stroke-width="1"/>
+  <text x="360" y="505" fill="white" font-size="9" font-weight="500" text-anchor="middle" font-family="JetBrains Mono, monospace">BoundingBoxHelper</text>
+  <text x="360" y="522" fill="#94a3b8" font-size="7" text-anchor="middle" font-family="JetBrains Mono, monospace">Box3Helper (selected)</text>
+  
+  <!-- Arrows -->
+  <line x1="140" y1="190" x2="130" y2="205" stroke="#64748b" stroke-width="1" marker-end="url(#a4)"/>
+  <line x1="360" y1="190" x2="315" y2="205" stroke="#64748b" stroke-width="1" marker-end="url(#a4)"/>
+  <line x1="500" y1="290" x2="490" y2="305" stroke="#64748b" stroke-width="1" marker-end="url(#a4)"/>
+  <line x1="600" y1="190" x2="600" y2="395" stroke="#64748b" stroke-width="1" marker-end="url(#a4)"/>
+  <line x1="600" y1="450" x2="240" y2="500" stroke="#64748b" stroke-width="1" stroke-dasharray="4,2"/>
+  <line x1="600" y1="450" x2="460" y2="500" stroke="#64748b" stroke-width="1" stroke-dasharray="4,2"/>
+  
+  <!-- Legend -->
+  <rect x="40" y="555" width="310" height="40" rx="4" fill="rgba(30, 41, 59, 0.5)" stroke="#475569" stroke-width="1"/>
+  <text x="60" y="575" fill="#64748b" font-size="8" font-family="JetBrains Mono, monospace">Source of truth: citiesStore (Zustand, persisted)</text>
+  <text x="60" y="588" fill="#64748b" font-size="7" font-family="JetBrains Mono, monospace">Theatre is a mirror — bidirectional sync via onValuesChange</text>
+</svg>

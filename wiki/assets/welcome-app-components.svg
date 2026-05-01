@@ -1,0 +1,63 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 550 380">
+  <defs>
+    <pattern id="g14" width="20" height="20" patternUnits="userSpaceOnUse">
+      <path d="M 20 0 L 0 0 0 20" fill="none" stroke="#1e293b" stroke-width="0.5"/>
+    </pattern>
+  </defs>
+  
+  <rect width="100%" height="100%" fill="#0f172a"/>
+  <rect width="100%" height="100%" fill="url(#g14)"/>
+  
+  <!-- WelcomeApp folder -->
+  <rect x="10" y="10" width="530" height="360" rx="8" fill="rgba(8, 51, 68, 0.2)" stroke="#22d3ee" stroke-width="1.5"/>
+  <text x="25" y="35" fill="#22d3ee" font-size="10" font-weight="600" font-family="JetBrains Mono, monospace">src/Presentation/Components/Apps/WelcomeApp/</text>
+  
+  <!-- Main files -->
+  <rect x="25" y="50" width="150" height="50" rx="4" fill="rgba(6, 78, 59, 0.4)" stroke="#34d399" stroke-width="1"/>
+  <text x="100" y="70" fill="white" font-size="9" font-weight="500" text-anchor="middle" font-family="JetBrains Mono, monospace">WelcomeApp.tsx</text>
+  <text x="100" y="90" fill="#94a3b8" font-size="7" text-anchor="middle">Main component</text>
+  
+  <rect x="185" y="50" width="150" height="50" rx="4" fill="rgba(30, 41, 59, 0.6)" stroke="#475569" stroke-width="1"/>
+  <text x="260" y="70" fill="white" font-size="9" font-weight="500" text-anchor="middle" font-family="JetBrains Mono, monospace">WelcomeApp.module.css</text>
+  <text x="260" y="90" fill="#94a3b8" font-size="7" text-anchor="middle">Styles</text>
+  
+  <rect x="345" y="50" width="130" height="50" rx="4" fill="rgba(251, 146, 60, 0.15)" stroke="#fb923c" stroke-width="1"/>
+  <text x="410" y="70" fill="white" font-size="9" font-weight="500" text-anchor="middle" font-family="JetBrains Mono, monospace">WelcomeApp.test.tsx</text>
+  <text x="410" y="90" fill="#94a3b8" font-size="7" text-anchor="middle">Unit tests</text>
+  
+  <rect x="485" y="50" width="50" height="50" rx="4" fill="rgba(76, 29, 149, 0.25)" stroke="#a78bfa" stroke-width="1"/>
+  <text x="510" y="80" fill="white" font-size="8" text-anchor="middle" font-family="JetBrains Mono, monospace">...</text>
+  
+  <!-- motionVariants -->
+  <rect x="25" y="115" width="160" height="45" rx="4" fill="rgba(59, 130, 246, 0.2)" stroke="#3b82f6" stroke-width="1"/>
+  <text x="105" y="138" fill="white" font-size="9" font-weight="500" text-anchor="middle" font-family="JetBrains Mono, monospace">motionVariants.ts</text>
+  <text x="105" y="152" fill="#94a3b8" font-size="7" text-anchor="middle">Framer Motion</text>
+  
+  <!-- components/ -->
+  <rect x="25" y="175" width="505" height="180" rx="6" fill="rgba(30, 41, 59, 0.4)" stroke="#475569" stroke-width="1"/>
+  <text x="40" y="200" fill="#64748b" font-size="10" font-weight="600" font-family="JetBrains Mono, monospace">components/</text>
+  
+  <!-- Component files -->
+  <rect x="40" y="215" width="100" height="55" rx="4" fill="rgba(59, 130, 246, 0.2)" stroke="#3b82f6" stroke-width="1"/>
+  <text x="90" y="238" fill="white" font-size="8" font-weight="500" text-anchor="middle" font-family="JetBrains Mono, monospace">HeroSection.tsx</text>
+  <text x="90" y="255" fill="#94a3b8" font-size="7" text-anchor="middle">Hero with</text>
+  <text x="90" y="265" fill="#94a3b8" font-size="7" text-anchor="middle">name/title</text>
+  
+  <rect x="150" y="215" width="100" height="55" rx="4" fill="rgba(59, 130, 246, 0.2)" stroke="#3b82f6" stroke-width="1"/>
+  <text x="200" y="238" fill="white" font-size="8" font-weight="500" text-anchor="middle" font-family="JetBrains Mono, monospace">SkillsBar.tsx</text>
+  <text x="200" y="255" fill="#94a3b8" font-size="7" text-anchor="middle">Skills display</text>
+  
+  <rect x="260" y="215" width="100" height="55" rx="4" fill="rgba(59, 130, 246, 0.2)" stroke="#3b82f6" stroke-width="1"/>
+  <text x="310" y="238" fill="white" font-size="8" font-weight="500" text-anchor="middle" font-family="JetBrains Mono, monospace">TechTags.tsx</text>
+  <text x="310" y="255" fill="#94a3b8" font-size="7" text-anchor="middle">Technology</text>
+  <text x="310" y="265" fill="#94a3b8" font-size="7" text-anchor="middle">tags</text>
+  
+  <rect x="370" y="215" width="150" height="55" rx="4" fill="rgba(59, 130, 246, 0.2)" stroke="#3b82f6" stroke-width="1"/>
+  <text x="445" y="238" fill="white" font-size="8" font-weight="500" text-anchor="middle" font-family="JetBrains Mono, monospace">ExperienceDepthSelect.tsx</text>
+  <text x="445" y="255" fill="#94a3b8" font-size="7" text-anchor="middle">Timeline depth</text>
+  <text x="445" y="265" fill="#94a3b8" font-size="7" text-anchor="middle">control</text>
+  
+  <!-- More components hint -->
+  <rect x="40" y="280" width="505" height="60" rx="4" fill="rgba(30, 41, 59, 0.5)" stroke="#475569" stroke-width="0.5"/>
+  <text x="292" y="315" fill="#64748b" font-size="9" text-anchor="middle" font-family="JetBrains Mono, monospace">features: Hero · Skills · TechTags · ExperienceDepth · UnicodeAnimation</text>
+</svg>
