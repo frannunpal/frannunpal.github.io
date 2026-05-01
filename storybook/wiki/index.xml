@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<rss version="2.0">
+    <channel>
+      <title>FDE Desktop Wiki</title>
+      <link>https://frannunpal.github.io/wiki</link>
+      <description>Last 10 notes on FDE Desktop Wiki</description>
+      <generator>Quartz -- quartz.jzhao.xyz</generator>
+      <item>
+    <title>index</title>
+    <link>https://frannunpal.github.io/wiki/</link>
+    <guid>https://frannunpal.github.io/wiki/</guid>
+    <description><![CDATA[ Wiki Index Content catalog. Each listed page with one-line summary. Read first to find relevant pages. ]]></description>
+    <pubDate>Fri, 01 May 2026 19:56:08 GMT</pubDate>
+  </item><item>
+    <title>log</title>
+    <link>https://frannunpal.github.io/wiki/log</link>
+    <guid>https://frannunpal.github.io/wiki/log</guid>
+    <description><![CDATA[ Wiki Log Change history and updates to the wiki. ]]></description>
+    <pubDate>Fri, 01 May 2026 19:56:08 GMT</pubDate>
+  </item><item>
+    <title>SCHEMA</title>
+    <link>https://frannunpal.github.io/wiki/SCHEMA</link>
+    <guid>https://frannunpal.github.io/wiki/SCHEMA</guid>
+    <description><![CDATA[ Wiki Schema Domain This wiki documents fde-desktop — a web desktop environment with hexagonal architecture, React 19, TypeScript and TanStack. ]]></description>
+    <pubDate>Fri, 01 May 2026 19:56:08 GMT</pubDate>
+  </item><item>
+    <title>Wiki System</title>
+    <link>https://frannunpal.github.io/wiki/concepts/wiki-system</link>
+    <guid>https://frannunpal.github.io/wiki/concepts/wiki-system</guid>
+    <description><![CDATA[ Wiki System FDE Desktop includes an integrated wiki built with Quartz v4, a fast static site generator for Markdown content. ]]></description>
+    <pubDate>Fri, 01 May 2026 00:00:00 GMT</pubDate>
+  </item><item>
+    <title>Skins System</title>
+    <link>https://frannunpal.github.io/wiki/concepts/skins</link>
+    <guid>https://frannunpal.github.io/wiki/concepts/skins</guid>
+    <description><![CDATA[ Skins System Appearance customization system for FDE Desktop with two independent axes: color skins and window control styles. ]]></description>
+    <pubDate>Thu, 30 Apr 2026 00:00:00 GMT</pubDate>
+  </item><item>
+    <title>Settings Store</title>
+    <link>https://frannunpal.github.io/wiki/entities/stores/settings-store</link>
+    <guid>https://frannunpal.github.io/wiki/entities/stores/settings-store</guid>
+    <description><![CDATA[ Settings Store User preferences and configuration state with persistence. ]]></description>
+    <pubDate>Wed, 29 Apr 2026 00:00:00 GMT</pubDate>
+  </item><item>
+    <title>Runtime Detection</title>
+    <link>https://frannunpal.github.io/wiki/concepts/runtime-detection</link>
+    <guid>https://frannunpal.github.io/wiki/concepts/runtime-detection</guid>
+    <description><![CDATA[ Runtime Detection FDE Desktop detects the runtime environment at startup. ]]></description>
+    <pubDate>Tue, 28 Apr 2026 00:00:00 GMT</pubDate>
+  </item><item>
+    <title>Testing</title>
+    <link>https://frannunpal.github.io/wiki/concepts/testing</link>
+    <guid>https://frannunpal.github.io/wiki/concepts/testing</guid>
+    <description><![CDATA[ Testing and You Tests are important. Yeah, I know nobody likes writing them, but this project has them and they work well. ]]></description>
+    <pubDate>Mon, 27 Apr 2026 00:00:00 GMT</pubDate>
+  </item><item>
+    <title>Desktop Icon</title>
+    <link>https://frannunpal.github.io/wiki/entities/desktop-icon</link>
+    <guid>https://frannunpal.github.io/wiki/entities/desktop-icon</guid>
+    <description><![CDATA[ Desktop Icon Draggable icon on the desktop. Supports double-click to open, right-click for context menu. ]]></description>
+    <pubDate>Mon, 27 Apr 2026 00:00:00 GMT</pubDate>
+  </item><item>
+    <title>Window</title>
+    <link>https://frannunpal.github.io/wiki/entities/window</link>
+    <guid>https://frannunpal.github.io/wiki/entities/window</guid>
+    <description><![CDATA[ Window Component that represents a draggable, resizable application window. Contains the app content, title bar, and window controls. ]]></description>
+    <pubDate>Mon, 27 Apr 2026 00:00:00 GMT</pubDate>
+  </item>
+    </channel>
+  </rss>

@@ -1,0 +1,1 @@
+import{t as e}from"./react-vendor-D0pMdxwY.js";import{u as t}from"./app-terminal-Cxw-ms-O.js";import"./index-D71PUvkS.js";var n=e(),r={icon:`FiLinkedin`,iconColor:`#0A66C2`,title:`LinkedIn`,url:`https://www.linkedin.com/in/francisco-n%C3%BA%C3%B1ez-palomares-74a484171/`,buttonLabel:`Open Francisco Núñez Profile`},i=e=>(0,n.jsx)(t,{...e,config:r});export{i as default};

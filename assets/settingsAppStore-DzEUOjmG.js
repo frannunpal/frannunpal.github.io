@@ -1,0 +1,1 @@
+import{t as e}from"./createWindowStateStore-1xm7R2UT.js";var t=e(),n=e=>t(t=>t.states[e]?.isDirty??!1);export{t as n,n as t};
