@@ -1,0 +1,40 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 320">
+  <defs>
+    <pattern id="g7" width="20" height="20" patternUnits="userSpaceOnUse">
+      <path d="M 20 0 L 0 0 0 20" fill="none" stroke="#1e293b" stroke-width="0.5"/>
+    </pattern>
+  </defs>
+  
+  <rect width="100%" height="100%" fill="#0f172a"/>
+  <rect width="100%" height="100%" fill="url(#g7)"/>
+  
+  <!-- MyApp folder -->
+  <rect x="30" y="25" width="440" height="280" rx="8" fill="rgba(8, 51, 68, 0.2)" stroke="#22d3ee" stroke-width="1.5"/>
+  <text x="50" y="50" fill="#22d3ee" font-size="11" font-weight="600" font-family="JetBrains Mono, monospace">src/Presentation/Components/Apps/MyApp/</text>
+  
+  <!-- Files -->
+  <rect x="50" y="70" width="190" height="50" rx="4" fill="rgba(6, 78, 59, 0.4)" stroke="#34d399" stroke-width="1"/>
+  <text x="145" y="95" fill="white" font-size="10" font-weight="500" text-anchor="middle" font-family="JetBrains Mono, monospace">MyApp.tsx</text>
+  <text x="145" y="110" fill="#94a3b8" font-size="7" text-anchor="middle" font-family="JetBrains Mono, monospace">Main component</text>
+  
+  <rect x="260" y="70" width="190" height="50" rx="4" fill="rgba(59, 130, 246, 0.2)" stroke="#3b82f6" stroke-width="1"/>
+  <text x="355" y="95" fill="white" font-size="10" font-weight="500" text-anchor="middle" font-family="JetBrains Mono, monospace">MyApp.module.css</text>
+  <text x="355" y="110" fill="#94a3b8" font-size="7" text-anchor="middle" font-family="JetBrains Mono, monospace">Styles (optional)</text>
+  
+  <rect x="50" y="135" width="190" height="50" rx="4" fill="rgba(251, 146, 60, 0.15)" stroke="#fb923c" stroke-width="1"/>
+  <text x="145" y="160" fill="white" font-size="10" font-weight="500" text-anchor="middle" font-family="JetBrains Mono, monospace">MyApp.test.tsx</text>
+  <text x="145" y="175" fill="#94a3b8" font-size="7" text-anchor="middle" font-family="JetBrains Mono, monospace">Tests (required)</text>
+  
+  <rect x="260" y="135" width="190" height="50" rx="4" fill="rgba(76, 29, 149, 0.25)" stroke="#a78bfa" stroke-width="1"/>
+  <text x="355" y="160" fill="white" font-size="10" font-weight="500" text-anchor="middle" font-family="JetBrains Mono, monospace">MyApp.stories.tsx</text>
+  <text x="355" y="175" fill="#94a3b8" font-size="7" text-anchor="middle" font-family="JetBrains Mono, monospace">Storybook (optional)</text>
+  
+  <rect x="50" y="200" width="190" height="50" rx="4" fill="rgba(30, 41, 59, 0.6)" stroke="#475569" stroke-width="1"/>
+  <text x="145" y="225" fill="white" font-size="10" font-weight="500" text-anchor="middle" font-family="JetBrains Mono, monospace">MyAppMenuBar.tsx</text>
+  <text x="145" y="240" fill="#94a3b8" font-size="7" text-anchor="middle" font-family="JetBrains Mono, monospace">Menu bar (if needed)</text>
+  
+  <!-- Legend -->
+  <rect x="50" y="265" width="400" height="30" rx="4" fill="rgba(30, 41, 59, 0.5)" stroke="#475569" stroke-width="1"/>
+  <text x="70" y="285" fill="#64748b" font-size="8" font-family="JetBrains Mono, monospace">WindowContentProps: { window, notifyReady }</text>
+  <text x="330" y="285" fill="#64748b" font-size="8" font-family="JetBrains Mono, monospace">contentData via window</text>
+</svg>

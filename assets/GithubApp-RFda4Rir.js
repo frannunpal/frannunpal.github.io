@@ -1,0 +1,1 @@
+import{t as e}from"./react-vendor-D0pMdxwY.js";import{u as t}from"./app-terminal-Cxw-ms-O.js";import"./index-DwDoILO8.js";var n=e(),r={icon:`FiGithub`,iconColor:`#000`,title:`GitHub`,url:`https://github.com/frannunpal`,buttonLabel:`Open Frannunpal Profile`},i=e=>(0,n.jsx)(t,{...e,config:r});export{i as default};
