@@ -1,0 +1,1 @@
+import{n as e}from"./chunk-jRWAZmH_.js";import{r as t,t as n}from"./createWindowStateStore-BqA3Hvv6.js";var r,i,a=e((()=>{t(),r=n(),i=e=>r(t=>t.states[e]?.isDirty??!1)}));export{i as n,r,a as t};

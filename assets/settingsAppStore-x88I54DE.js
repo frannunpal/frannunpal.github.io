@@ -1,0 +1,1 @@
+import{t as e}from"./createWindowStateStore-hq-OrpaL.js";var t=e(),n=e=>t(t=>t.states[e]?.isDirty??!1);export{t as n,n as t};

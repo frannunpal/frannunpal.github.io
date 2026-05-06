@@ -1,0 +1,655 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr"><head><title>Architecture</title><meta charset="utf-8"/><link rel="preconnect" href="https://fonts.googleapis.com"/><link rel="preconnect" href="https://fonts.gstatic.com"/><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&amp;family=Inter:ital,wght@0,400;0,600;1,400;1,600&amp;family=JetBrains Mono:wght@400;600&amp;display=swap"/><link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin="anonymous"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/><meta name="og:site_name" content="FDE Desktop Wiki"/><meta property="og:title" content="Architecture"/><meta property="og:type" content="website"/><meta name="twitter:card" content="summary_large_image"/><meta name="twitter:title" content="Architecture"/><meta name="twitter:description" content="Architecture This project is a virtual desktop in the browser, like those web-based desktop environments you might find on certain web services."/><meta property="og:description" content="Architecture This project is a virtual desktop in the browser, like those web-based desktop environments you might find on certain web services."/><meta property="og:image:alt" content="Architecture This project is a virtual desktop in the browser, like those web-based desktop environments you might find on certain web services."/><meta property="og:image" content="https://frannunpal.github.io/wiki/static/og-image.png"/><meta property="og:image:url" content="https://frannunpal.github.io/wiki/static/og-image.png"/><meta name="twitter:image" content="https://frannunpal.github.io/wiki/static/og-image.png"/><meta property="og:image:type" content="image/.png"/><meta property="twitter:domain" content="frannunpal.github.io/wiki"/><meta property="og:url" content="https://frannunpal.github.io/wiki/concepts/architecture"/><meta property="twitter:url" content="https://frannunpal.github.io/wiki/concepts/architecture"/><link rel="icon" href="../static/icon.png"/><meta name="description" content="Architecture This project is a virtual desktop in the browser, like those web-based desktop environments you might find on certain web services."/><meta name="generator" content="Quartz"/><link href="../index.css" rel="stylesheet" type="text/css" data-persist="true"/><style>.expand-button {
+  position: absolute;
+  display: flex;
+  float: right;
+  padding: 0.4rem;
+  margin: 0.3rem;
+  right: 0;
+  color: var(--gray);
+  border-color: var(--dark);
+  background-color: var(--light);
+  border: 1px solid;
+  border-radius: 5px;
+  opacity: 0;
+  transition: 0.2s;
+}
+.expand-button > svg {
+  fill: var(--light);
+  filter: contrast(0.3);
+}
+.expand-button:hover {
+  cursor: pointer;
+  border-color: var(--secondary);
+}
+.expand-button:focus {
+  outline: 0;
+}
+
+pre:hover > .expand-button {
+  opacity: 1;
+  transition: 0.2s;
+}
+
+#mermaid-container {
+  position: fixed;
+  contain: layout;
+  z-index: 999;
+  left: 0;
+  top: 0;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  display: none;
+  backdrop-filter: blur(4px);
+  background: rgba(0, 0, 0, 0.5);
+}
+#mermaid-container.active {
+  display: inline-block;
+}
+#mermaid-container > #mermaid-space {
+  border: 1px solid var(--lightgray);
+  background-color: var(--light);
+  border-radius: 5px;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  height: 80vh;
+  width: 80vw;
+  overflow: hidden;
+}
+#mermaid-container > #mermaid-space > .mermaid-content {
+  position: relative;
+  transform-origin: 0 0;
+  transition: transform 0.1s ease;
+  overflow: visible;
+  min-height: 200px;
+  min-width: 200px;
+}
+#mermaid-container > #mermaid-space > .mermaid-content pre {
+  margin: 0;
+  border: none;
+}
+#mermaid-container > #mermaid-space > .mermaid-content svg {
+  max-width: none;
+  height: auto;
+}
+#mermaid-container > #mermaid-space > .mermaid-controls {
+  position: absolute;
+  bottom: 20px;
+  right: 20px;
+  display: flex;
+  gap: 8px;
+  padding: 8px;
+  background: var(--light);
+  border: 1px solid var(--lightgray);
+  border-radius: 6px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  z-index: 2;
+}
+#mermaid-container > #mermaid-space > .mermaid-controls .mermaid-control-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  padding: 0;
+  border: 1px solid var(--lightgray);
+  background: var(--light);
+  color: var(--dark);
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 16px;
+  font-family: var(--bodyFont);
+  transition: all 0.2s ease;
+}
+#mermaid-container > #mermaid-space > .mermaid-controls .mermaid-control-button:hover {
+  background: var(--lightgray);
+}
+#mermaid-container > #mermaid-space > .mermaid-controls .mermaid-control-button:active {
+  transform: translateY(1px);
+}
+#mermaid-container > #mermaid-space > .mermaid-controls .mermaid-control-button:nth-child(2) {
+  width: auto;
+  padding: 0 12px;
+  font-size: 14px;
+}
+/*# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VSb290IjoiL3Vzci9zcmMvYXBwL3F1YXJ0ei9jb21wb25lbnRzL3N0eWxlcyIsInNvdXJjZXMiOlsibWVybWFpZC5pbmxpbmUuc2NzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtFQUNFO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBOztBQUVBO0VBQ0U7RUFDQTs7QUFHRjtFQUNFO0VBQ0E7O0FBR0Y7RUFDRTs7O0FBS0Y7RUFDRTtFQUNBOzs7QUFJSjtFQUNFO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7O0FBRUE7RUFDRTs7QUFHRjtFQUNFO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBOztBQUVBO0VBQ0U7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBOztBQUVBO0VBQ0U7RUFDQTs7QUFHRjtFQUNFO0VBQ0E7O0FBSUo7RUFDRTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBOztBQUVBO0VBQ0U7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTs7QUFFQTtFQUNFOztBQUdGO0VBQ0U7O0FBSUY7RUFDRTtFQUNBO0VBQ0EiLCJzb3VyY2VzQ29udGVudCI6WyIuZXhwYW5kLWJ1dHRvbiB7XG4gIHBvc2l0aW9uOiBhYnNvbHV0ZTtcbiAgZGlzcGxheTogZmxleDtcbiAgZmxvYXQ6IHJpZ2h0O1xuICBwYWRkaW5nOiAwLjRyZW07XG4gIG1hcmdpbjogMC4zcmVtO1xuICByaWdodDogMDsgLy8gTk9URTogcmlnaHQgd2lsbCBiZSBzZXQgaW4gbWVybWFpZC5pbmxpbmUudHNcbiAgY29sb3I6IHZhcigtLWdyYXkpO1xuICBib3JkZXItY29sb3I6IHZhcigtLWRhcmspO1xuICBiYWNrZ3JvdW5kLWNvbG9yOiB2YXIoLS1saWdodCk7XG4gIGJvcmRlcjogMXB4IHNvbGlkO1xuICBib3JkZXItcmFkaXVzOiA1cHg7XG4gIG9wYWNpdHk6IDA7XG4gIHRyYW5zaXRpb246IDAuMnM7XG5cbiAgJiA+IHN2ZyB7XG4gICAgZmlsbDogdmFyKC0tbGlnaHQpO1xuICAgIGZpbHRlcjogY29udHJhc3QoMC4zKTtcbiAgfVxuXG4gICY6aG92ZXIge1xuICAgIGN1cnNvcjogcG9pbnRlcjtcbiAgICBib3JkZXItY29sb3I6IHZhcigtLXNlY29uZGFyeSk7XG4gIH1cblxuICAmOmZvY3VzIHtcbiAgICBvdXRsaW5lOiAwO1xuICB9XG59XG5cbnByZSB7XG4gICY6aG92ZXIgPiAuZXhwYW5kLWJ1dHRvbiB7XG4gICAgb3BhY2l0eTogMTtcbiAgICB0cmFuc2l0aW9uOiAwLjJzO1xuICB9XG59XG5cbiNtZXJtYWlkLWNvbnRhaW5lciB7XG4gIHBvc2l0aW9uOiBmaXhlZDtcbiAgY29udGFpbjogbGF5b3V0O1xuICB6LWluZGV4OiA5OTk7XG4gIGxlZnQ6IDA7XG4gIHRvcDogMDtcbiAgd2lkdGg6IDEwMHZ3O1xuICBoZWlnaHQ6IDEwMHZoO1xuICBvdmVyZmxvdzogaGlkZGVuO1xuICBkaXNwbGF5OiBub25lO1xuICBiYWNrZHJvcC1maWx0ZXI6IGJsdXIoNHB4KTtcbiAgYmFja2dyb3VuZDogcmdiYSgwLCAwLCAwLCAwLjUpO1xuXG4gICYuYWN0aXZlIHtcbiAgICBkaXNwbGF5OiBpbmxpbmUtYmxvY2s7XG4gIH1cblxuICAmID4gI21lcm1haWQtc3BhY2Uge1xuICAgIGJvcmRlcjogMXB4IHNvbGlkIHZhcigtLWxpZ2h0Z3JheSk7XG4gICAgYmFja2dyb3VuZC1jb2xvcjogdmFyKC0tbGlnaHQpO1xuICAgIGJvcmRlci1yYWRpdXM6IDVweDtcbiAgICBwb3NpdGlvbjogZml4ZWQ7XG4gICAgdG9wOiA1MCU7XG4gICAgbGVmdDogNTAlO1xuICAgIHRyYW5zZm9ybTogdHJhbnNsYXRlKC01MCUsIC01MCUpO1xuICAgIGhlaWdodDogODB2aDtcbiAgICB3aWR0aDogODB2dztcbiAgICBvdmVyZmxvdzogaGlkZGVuO1xuXG4gICAgJiA+IC5tZXJtYWlkLWNvbnRlbnQge1xuICAgICAgcG9zaXRpb246IHJlbGF0aXZlO1xuICAgICAgdHJhbnNmb3JtLW9yaWdpbjogMCAwO1xuICAgICAgdHJhbnNpdGlvbjogdHJhbnNmb3JtIDAuMXMgZWFzZTtcbiAgICAgIG92ZXJmbG93OiB2aXNpYmxlO1xuICAgICAgbWluLWhlaWdodDogMjAwcHg7XG4gICAgICBtaW4td2lkdGg6IDIwMHB4O1xuXG4gICAgICBwcmUge1xuICAgICAgICBtYXJnaW46IDA7XG4gICAgICAgIGJvcmRlcjogbm9uZTtcbiAgICAgIH1cblxuICAgICAgc3ZnIHtcbiAgICAgICAgbWF4LXdpZHRoOiBub25lO1xuICAgICAgICBoZWlnaHQ6IGF1dG87XG4gICAgICB9XG4gICAgfVxuXG4gICAgJiA+IC5tZXJtYWlkLWNvbnRyb2xzIHtcbiAgICAgIHBvc2l0aW9uOiBhYnNvbHV0ZTtcbiAgICAgIGJvdHRvbTogMjBweDtcbiAgICAgIHJpZ2h0OiAyMHB4O1xuICAgICAgZGlzcGxheTogZmxleDtcbiAgICAgIGdhcDogOHB4O1xuICAgICAgcGFkZGluZzogOHB4O1xuICAgICAgYmFja2dyb3VuZDogdmFyKC0tbGlnaHQpO1xuICAgICAgYm9yZGVyOiAxcHggc29saWQgdmFyKC0tbGlnaHRncmF5KTtcbiAgICAgIGJvcmRlci1yYWRpdXM6IDZweDtcbiAgICAgIGJveC1zaGFkb3c6IDAgMnB4IDRweCByZ2JhKDAsIDAsIDAsIDAuMSk7XG4gICAgICB6LWluZGV4OiAyO1xuXG4gICAgICAubWVybWFpZC1jb250cm9sLWJ1dHRvbiB7XG4gICAgICAgIGRpc3BsYXk6IGZsZXg7XG4gICAgICAgIGFsaWduLWl0ZW1zOiBjZW50ZXI7XG4gICAgICAgIGp1c3RpZnktY29udGVudDogY2VudGVyO1xuICAgICAgICB3aWR0aDogMzJweDtcbiAgICAgICAgaGVpZ2h0OiAzMnB4O1xuICAgICAgICBwYWRkaW5nOiAwO1xuICAgICAgICBib3JkZXI6IDFweCBzb2xpZCB2YXIoLS1saWdodGdyYXkpO1xuICAgICAgICBiYWNrZ3JvdW5kOiB2YXIoLS1saWdodCk7XG4gICAgICAgIGNvbG9yOiB2YXIoLS1kYXJrKTtcbiAgICAgICAgYm9yZGVyLXJhZGl1czogNHB4O1xuICAgICAgICBjdXJzb3I6IHBvaW50ZXI7XG4gICAgICAgIGZvbnQtc2l6ZTogMTZweDtcbiAgICAgICAgZm9udC1mYW1pbHk6IHZhcigtLWJvZHlGb250KTtcbiAgICAgICAgdHJhbnNpdGlvbjogYWxsIDAuMnMgZWFzZTtcblxuICAgICAgICAmOmhvdmVyIHtcbiAgICAgICAgICBiYWNrZ3JvdW5kOiB2YXIoLS1saWdodGdyYXkpO1xuICAgICAgICB9XG5cbiAgICAgICAgJjphY3RpdmUge1xuICAgICAgICAgIHRyYW5zZm9ybTogdHJhbnNsYXRlWSgxcHgpO1xuICAgICAgICB9XG5cbiAgICAgICAgLy8gU3R5bGUgdGhlIHJlc2V0IGJ1dHRvbiBkaWZmZXJlbnRseVxuICAgICAgICAmOm50aC1jaGlsZCgyKSB7XG4gICAgICAgICAgd2lkdGg6IGF1dG87XG4gICAgICAgICAgcGFkZGluZzogMCAxMnB4O1xuICAgICAgICAgIGZvbnQtc2l6ZTogMTRweDtcbiAgICAgICAgfVxuICAgICAgfVxuICAgIH1cbiAgfVxufVxuIl19 */</style><link href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" rel="stylesheet" type="text/css" data-persist="true"/><script src="../prescript.js" type="application/javascript" data-persist="true"></script><script type="application/javascript" data-persist="true">const fetchData = fetch("../static/contentIndex.json").then(data => data.json())</script><link rel="alternate" type="application/rss+xml" title="RSS Feed" href="https://frannunpal.github.io/wiki/index.xml"/></head><body data-slug="concepts/architecture"><div id="quartz-root" class="page"><div id="quartz-body"><div class="left sidebar"><h2 class="page-title"><a href="..">FDE Desktop Wiki</a></h2><div class="spacer mobile-only"></div><div class="flex-component" style="flex-direction: row; flex-wrap: nowrap; gap: 1rem;"><div style="flex-grow: 1; flex-shrink: 1; flex-basis: auto; order: 0; align-self: center; justify-self: center;"><div class="search"><button class="search-button"><svg role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 19.9 19.7"><title>Search</title><g class="search-path" fill="none"><path stroke-linecap="square" d="M18.5 18.3l-5.4-5.4"></path><circle cx="8" cy="8" r="7"></circle></g></svg><p>Search</p></button><div class="search-container"><div class="search-space"><input autocomplete="off" class="search-bar" name="search" type="text" aria-label="Search for something" placeholder="Search for something"/><div class="search-layout" data-preview="true"></div></div></div></div></div><div style="flex-grow: 0; flex-shrink: 1; flex-basis: auto; order: 0; align-self: center; justify-self: center;"><button class="darkmode"><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" class="dayIcon" x="0px" y="0px" viewBox="0 0 35 35" style="enable-background:new 0 0 35 35" xml:space="preserve" aria-label="Dark mode"><title>Dark mode</title><path d="M6,17.5C6,16.672,5.328,16,4.5,16h-3C0.672,16,0,16.672,0,17.5    S0.672,19,1.5,19h3C5.328,19,6,18.328,6,17.5z M7.5,26c-0.414,0-0.789,0.168-1.061,0.439l-2,2C4.168,28.711,4,29.086,4,29.5    C4,30.328,4.671,31,5.5,31c0.414,0,0.789-0.168,1.06-0.44l2-2C8.832,28.289,9,27.914,9,27.5C9,26.672,8.329,26,7.5,26z M17.5,6    C18.329,6,19,5.328,19,4.5v-3C19,0.672,18.329,0,17.5,0S16,0.672,16,1.5v3C16,5.328,16.671,6,17.5,6z M27.5,9    c0.414,0,0.789-0.168,1.06-0.439l2-2C30.832,6.289,31,5.914,31,5.5C31,4.672,30.329,4,29.5,4c-0.414,0-0.789,0.168-1.061,0.44    l-2,2C26.168,6.711,26,7.086,26,7.5C26,8.328,26.671,9,27.5,9z M6.439,8.561C6.711,8.832,7.086,9,7.5,9C8.328,9,9,8.328,9,7.5    c0-0.414-0.168-0.789-0.439-1.061l-2-2C6.289,4.168,5.914,4,5.5,4C4.672,4,4,4.672,4,5.5c0,0.414,0.168,0.789,0.439,1.06    L6.439,8.561z M33.5,16h-3c-0.828,0-1.5,0.672-1.5,1.5s0.672,1.5,1.5,1.5h3c0.828,0,1.5-0.672,1.5-1.5S34.328,16,33.5,16z     M28.561,26.439C28.289,26.168,27.914,26,27.5,26c-0.828,0-1.5,0.672-1.5,1.5c0,0.414,0.168,0.789,0.439,1.06l2,2    C28.711,30.832,29.086,31,29.5,31c0.828,0,1.5-0.672,1.5-1.5c0-0.414-0.168-0.789-0.439-1.061L28.561,26.439z M17.5,29    c-0.829,0-1.5,0.672-1.5,1.5v3c0,0.828,0.671,1.5,1.5,1.5s1.5-0.672,1.5-1.5v-3C19,29.672,18.329,29,17.5,29z M17.5,7    C11.71,7,7,11.71,7,17.5S11.71,28,17.5,28S28,23.29,28,17.5S23.29,7,17.5,7z M17.5,25c-4.136,0-7.5-3.364-7.5-7.5    c0-4.136,3.364-7.5,7.5-7.5c4.136,0,7.5,3.364,7.5,7.5C25,21.636,21.636,25,17.5,25z"></path></svg><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" class="nightIcon" x="0px" y="0px" viewBox="0 0 100 100" style="enable-background:new 0 0 100 100" xml:space="preserve" aria-label="Light mode"><title>Light mode</title><path d="M96.76,66.458c-0.853-0.852-2.15-1.064-3.23-0.534c-6.063,2.991-12.858,4.571-19.655,4.571  C62.022,70.495,50.88,65.88,42.5,57.5C29.043,44.043,25.658,23.536,34.076,6.47c0.532-1.08,0.318-2.379-0.534-3.23  c-0.851-0.852-2.15-1.064-3.23-0.534c-4.918,2.427-9.375,5.619-13.246,9.491c-9.447,9.447-14.65,22.008-14.65,35.369  c0,13.36,5.203,25.921,14.65,35.368s22.008,14.65,35.368,14.65c13.361,0,25.921-5.203,35.369-14.65  c3.872-3.871,7.064-8.328,9.491-13.246C97.826,68.608,97.611,67.309,96.76,66.458z"></path></svg></button></div><div style="flex-grow: 0; flex-shrink: 1; flex-basis: auto; order: 0; align-self: center; justify-self: center;"><button class="readermode"><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" class="readerIcon" fill="currentColor" stroke="currentColor" stroke-width="0.2" stroke-linecap="round" stroke-linejoin="round" width="64px" height="64px" viewBox="0 0 24 24" aria-label="Reader mode"><title>Reader mode</title><g transform="translate(-1.8, -1.8) scale(1.15, 1.2)"><path d="M8.9891247,2.5 C10.1384702,2.5 11.2209868,2.96705384 12.0049645,3.76669482 C12.7883914,2.96705384 13.8709081,2.5 15.0202536,2.5 L18.7549359,2.5 C19.1691495,2.5 19.5049359,2.83578644 19.5049359,3.25 L19.5046891,4.004 L21.2546891,4.00457396 C21.6343849,4.00457396 21.9481801,4.28672784 21.9978425,4.6528034 L22.0046891,4.75457396 L22.0046891,20.25 C22.0046891,20.6296958 21.7225353,20.943491 21.3564597,20.9931534 L21.2546891,21 L2.75468914,21 C2.37499337,21 2.06119817,20.7178461 2.01153575,20.3517706 L2.00468914,20.25 L2.00468914,4.75457396 C2.00468914,4.37487819 2.28684302,4.061083 2.65291858,4.01142057 L2.75468914,4.00457396 L4.50368914,4.004 L4.50444233,3.25 C4.50444233,2.87030423 4.78659621,2.55650904 5.15267177,2.50684662 L5.25444233,2.5 L8.9891247,2.5 Z M4.50368914,5.504 L3.50468914,5.504 L3.50468914,19.5 L10.9478955,19.4998273 C10.4513189,18.9207296 9.73864328,18.5588115 8.96709342,18.5065584 L8.77307039,18.5 L5.25444233,18.5 C4.87474657,18.5 4.56095137,18.2178461 4.51128895,17.8517706 L4.50444233,17.75 L4.50368914,5.504 Z M19.5049359,17.75 C19.5049359,18.1642136 19.1691495,18.5 18.7549359,18.5 L15.2363079,18.5 C14.3910149,18.5 13.5994408,18.8724714 13.0614828,19.4998273 L20.5046891,19.5 L20.5046891,5.504 L19.5046891,5.504 L19.5049359,17.75 Z M18.0059359,3.999 L15.0202536,4 L14.8259077,4.00692283 C13.9889509,4.06666544 13.2254227,4.50975805 12.7549359,5.212 L12.7549359,17.777 L12.7782651,17.7601316 C13.4923805,17.2719483 14.3447024,17 15.2363079,17 L18.0059359,16.999 L18.0056891,4.798 L18.0033792,4.75457396 L18.0056891,4.71 L18.0059359,3.999 Z M8.9891247,4 L6.00368914,3.999 L6.00599909,4.75457396 L6.00599909,4.75457396 L6.00368914,4.783 L6.00368914,16.999 L8.77307039,17 C9.57551536,17 10.3461406,17.2202781 11.0128313,17.6202194 L11.2536891,17.776 L11.2536891,5.211 C10.8200889,4.56369974 10.1361548,4.13636104 9.37521067,4.02745763 L9.18347055,4.00692283 L8.9891247,4 Z"></path></g></svg></button></div></div><div class="explorer" data-behavior="link" data-collapsed="collapsed" data-savestate="true" data-data-fns="{&quot;order&quot;:[&quot;filter&quot;,&quot;map&quot;,&quot;sort&quot;],&quot;sortFn&quot;:&quot;(a,b)=>!a.isFolder&amp;&amp;!b.isFolder||a.isFolder&amp;&amp;b.isFolder?a.displayName.localeCompare(b.displayName,void 0,{numeric:!0,sensitivity:\&quot;base\&quot;}):!a.isFolder&amp;&amp;b.isFolder?1:-1&quot;,&quot;filterFn&quot;:&quot;node=>node.slugSegment!==\&quot;tags\&quot;&quot;,&quot;mapFn&quot;:&quot;node=>node&quot;}"><button type="button" class="explorer-toggle mobile-explorer hide-until-loaded" data-mobile="true" aria-controls="explorer-10"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide-menu"><line x1="4" x2="20" y1="12" y2="12"></line><line x1="4" x2="20" y1="6" y2="6"></line><line x1="4" x2="20" y1="18" y2="18"></line></svg></button><button type="button" class="title-button explorer-toggle desktop-explorer" data-mobile="false" aria-expanded="true"><h2>Explorer</h2><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="5 8 14 8" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="fold"><polyline points="6 9 12 15 18 9"></polyline></svg></button><div id="explorer-10" class="explorer-content" aria-expanded="false" role="group"><ul class="explorer-ul overflow" id="list-0"><li class="overflow-end"></li></ul></div><template id="template-file"><li><a href="#"></a></li></template><template id="template-folder"><li><div class="folder-container"><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="5 8 14 8" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="folder-icon"><polyline points="6 9 12 15 18 9"></polyline></svg><div><button class="folder-button"><span class="folder-title"></span></button></div></div><div class="folder-outer"><ul class="content"></ul></div></li></template></div></div><div class="center"><div class="page-header"><div class="popover-hint"><nav class="breadcrumb-container" aria-label="breadcrumbs"><div class="breadcrumb-element"><a href="../">Home</a><p> ❯ </p></div><div class="breadcrumb-element"><a href="../concepts/">concepts</a><p> ❯ </p></div><div class="breadcrumb-element"><a href>Architecture</a></div></nav><h1 class="article-title">Architecture</h1><p show-comma="true" class="content-meta"><time datetime="2026-04-24T00:00:00.000Z">Apr 24, 2026</time><span>12 min read</span></p><ul class="tags"><li><a href="../tags/architecture" class="internal tag-link">architecture</a></li><li><a href="../tags/hexagonal" class="internal tag-link">hexagonal</a></li><li><a href="../tags/react" class="internal tag-link">react</a></li><li><a href="../tags/typescript" class="internal tag-link">typescript</a></li><li><a href="../tags/zustand" class="internal tag-link">zustand</a></li></ul></div></div><article class="popover-hint"><h1 id="architecture">Architecture<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#architecture" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h1>
+<p><img src=".././../assets/architecture-project-structure.svg" alt="Project Structure"/></p>
+<p>This project is a virtual desktop in the browser, like those web-based desktop environments you might find on certain web services. The idea is simple: recreate the feeling of a real operating system inside Chrome or Firefox.</p>
+<h2 id="the-tech-stack">The Tech Stack<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#the-tech-stack" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<p>Before diving into the details, here’s what it’s built with:</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="table-container"><table><thead><tr><th>Technology</th><th>Why</th></tr></thead><tbody><tr><td><strong>React 19</strong></td><td>Latest React with improved concurrent features</td></tr><tr><td><strong>TypeScript</strong></td><td>Window state is complex, types catch bugs before they hit production</td></tr><tr><td><strong>react-rnd</strong></td><td>170k weekly downloads. Handles all the drag and resize math</td></tr><tr><td><strong>Zustand</strong></td><td>State management without the boilerplate. We’re happy with it</td></tr><tr><td><strong>Mantine v9</strong></td><td>Pretty Components Without a Designer. Upgraded from v8 for latest features</td></tr><tr><td><strong>Framer Motion</strong></td><td>Animations that don’t kill performance</td></tr></tbody></table></div>
+<h2 id="project-structure-overview">Project Structure Overview<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#project-structure-overview" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<p>This project has a <strong>dual nature</strong>: a reusable NPM package and an example application that consumes it.</p>
+<pre><code>fran-desktop/
+├── packages/
+│   └── core/                 # @fde-desktop/fde-core (npm package)
+│       ├── src/
+│       │   ├── components/   # UI components (Window, Desktop, Taskbar, etc.)
+│       │   ├── apps/         # Core app exports (Files, Settings, etc.)
+│       │   ├── domain/        # Entity factories (createWindow, etc.)
+│       │   ├── infrastructure/ # Adapters (IndexedDB, Docker, etc.)
+│       │   ├── stores/        # Zustand stores
+│       │   ├── hooks/         # React hooks
+│       │   ├── constants/     # App definitions, theme, layout
+│       │   ├── types/         # TypeScript types
+│       │   ├── interfaces/     # TypeScript interfaces
+│       │   ├── i18n/          # Internationalization
+│       │   ├── utils/         # Utility functions
+│       │   └── index.ts       # Public API
+│       └── package.json
+│
+└── src/                      # Example app (consumer of @fde-desktop/fde-core)
+    ├── App.tsx               # Uses &lt;FdeDesktop customApps={userApps} />
+    ├── main.tsx              # React entry point
+    ├── Presentation/
+    │   └── Components/
+    │       ├── Apps/
+    │       │   ├── WelcomeApp/   # Personal portfolio app
+    │       │   ├── LinkedinApp/  # LinkedIn link app
+    │       │   ├── GithubApp/    # GitHub link app
+    │       │   └── DosEmulatorApp/ # DOS game emulator
+    │       └── Window/
+    │           └── AppRegistry.tsx  # userApps definition
+    ├── Infrastructure/
+    │   └── Adapters/
+    │       └── JsDosAdapter.ts  # DOS emulator adapter
+    └── Shared/
+        └── Testing/          # Test utilities
+</code></pre>
+<h3 id="packagescore--the-library"><code>packages/core/</code> — The Library<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#packagescore--the-library" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<p>The <code>packages/core/</code> directory contains <code>@fde-desktop/fde-core</code>, a standalone npm package. It exports:</p>
+<ul>
+<li><strong>UI Components</strong>: <code>FdeDesktop</code>, <code>Desktop</code>, <code>Window</code>, <code>Taskbar</code>, <code>Launcher</code>, <code>AppMenuBar</code>, <code>ContextMenu</code>, etc.</li>
+<li><strong>Core Apps</strong>: Files, Settings, Notepad, Image Viewer, PDF Viewer, Calendar, Terminal, VS Code</li>
+<li><strong>Stores</strong>: Zustand stores for desktop, settings, custom apps</li>
+<li><strong>Hooks</strong>: 30+ hooks for app management, notifications, icons, file system</li>
+<li><strong>Domain Entities</strong>: Factories for creating windows, icons, folders</li>
+<li><strong>Infrastructure</strong>: IndexedDB file system, Docker adapter, FDE API adapter</li>
+<li><strong>Types &amp; Utils</strong>: Full TypeScript support and utility functions</li>
+</ul>
+<h3 id="src--the-example-app"><code>src/</code> — The Example App<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#src--the-example-app" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<p>The <code>src/</code> directory is <strong>not</strong> part of the npm package. It’s a demonstration application that shows how to use <code>@fde-desktop/fde-core</code>:</p>
+<ul>
+<li><strong>WelcomeApp</strong>: Personal portfolio (the “home” app)</li>
+<li><strong>LinkedinApp</strong>, <strong>GithubApp</strong>: External link apps</li>
+<li><strong>DosEmulatorApp</strong>: DOS game emulator using js-dos</li>
+<li><strong>AppRegistry</strong>: Shows how to register custom apps</li>
+</ul>
+<p>The example app connects to the core library via <code>App.tsx</code>:</p>
+<figure data-rehype-pretty-code-figure><pre tabindex="0" data-language="tsx" data-theme="github-light github-dark"><code data-language="tsx" data-theme="github-light github-dark" style="display:grid;"><span data-line><span style="--shiki-light:#6A737D;--shiki-dark:#6A737D;">// src/App.tsx</span></span>
+<span data-line><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;">import</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;"> { FdeDesktop } </span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;">from</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;"> '@fde-desktop/fde-core'</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">;</span></span>
+<span data-line><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;">import</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;"> { userApps } </span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;">from</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;"> '@presentation/Components/Window/AppRegistry'</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">;</span></span>
+<span data-line> </span>
+<span data-line><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;">function</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;"> App</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">() {</span></span>
+<span data-line><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;">  return</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;"> (</span></span>
+<span data-line><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">    &lt;</span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;">FdeDesktop</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;"> customApps</span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;">=</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">{userApps} </span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;">defaultWallpaper</span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;">=</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">{defaultWallpaper} </span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;">initialApp</span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;">=</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">&quot;welcome&quot;</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;"> /></span></span>
+<span data-line><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">  );</span></span>
+<span data-line><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">}</span></span></code></pre></figure>
+<h3 id="how-they-connect">How They Connect<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#how-they-connect" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<ol>
+<li><code>packages/core/</code> exports everything via <code>src/index.ts</code></li>
+<li><code>src/App.tsx</code> imports <code>FdeDesktop</code> and passes custom apps</li>
+<li>Core apps (Files, Settings, etc.) are loaded automatically by <code>FdeDesktop</code></li>
+<li>Custom apps (Welcome, LinkedIn, GitHub) are registered via <code>customApps</code> prop</li>
+</ol>
+<h2 id="hexagonal-architecture-ports--adapters">Hexagonal Architecture (Ports &amp; Adapters)<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#hexagonal-architecture-ports--adapters" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<p>The project uses a simplified hexagonal architecture, balancing clean separation with practical simplicity:</p>
+<pre><code>Domain (pure entities/factories)
+   ↓
+Infrastructure (adapters: react-rnd, IndexedDB)
+   ↓
+Presentation (React components + Zustand stores)
+</code></pre>
+<h3 id="domain-layer-packagescoresrcdomain">Domain Layer (<code>packages/core/src/domain/</code>)<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#domain-layer-packagescoresrcdomain" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<p>Pure business entities live here. No external dependencies, no React, nothing. Just plain TypeScript factories:</p>
+<ul>
+<li><strong>Window.ts</strong>: Factory for creating window entities</li>
+<li><strong>FileSystem.ts</strong>: Factories for file system nodes (files and folders)</li>
+<li><strong>DesktopIcon.ts</strong>: Factory for desktop icons</li>
+<li><strong>LauncherFolder.ts</strong>: Factory for creating launcher folder entities (predefined and custom folders that organize apps in the Launcher)</li>
+</ul>
+<h3 id="application-layer-interfaces-in-packagescoresrcinterfaces">Application Layer (interfaces in <code>packages/core/src/interfaces/</code>)<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#application-layer-interfaces-in-packagescoresrcinterfaces" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<p>Contains the interface contracts (ports) that adapters implement:</p>
+<ul>
+<li><strong>IWindowManager</strong>: Interface for window operations</li>
+<li><strong>IFileSystem</strong>: Interface for file system operations</li>
+<li><strong>IThemeProvider</strong>: Interface for theme management</li>
+</ul>
+<p>The use cases were intentionally removed as they added unnecessary indirection. The stores call adapters directly, keeping the architecture simple and practical.</p>
+<h3 id="infrastructure-layer-packagescoresrcinfrastructure">Infrastructure Layer (<code>packages/core/src/infrastructure/</code>)<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#infrastructure-layer-packagescoresrcinfrastructure" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<p>The adapters that connect the real world with our logic:</p>
+<p><strong>Adapters:</strong></p>
+<ul>
+<li><strong>WindowManagerAdapter.ts</strong>: Implements <code>IWindowManager</code>. Manages the entire window lifecycle (open, close, minimize, maximize, focus, move, resize). Also handles the z-index strategy with alwaysOnTop.</li>
+<li><strong>IndexedDBFileSystem.ts</strong>: Implements <code>IFileSystem</code>. Persists the file system and file blobs to IndexedDB. Supports seeding from a manifest, SHA-256 hash-based blob deduplication, and automatic migration from legacy localStorage data.</li>
+<li><strong>IndexedDBBlobStore.ts</strong>: Low-level blob storage module. Handles raw <code>save()</code>, <code>load()</code>, <code>remove()</code>, <code>toBlobUrl()</code> operations on a dedicated IndexedDB database (<code>fde-desktop-blobs</code>). Files stored here are referenced via the <code>idb://</code> URL scheme.</li>
+<li><strong>LocalStorageFileSystem.ts</strong>: Legacy <code>IFileSystem</code> implementation. Kept for backward compatibility — new installations use <code>IndexedDBFileSystem</code> by default.</li>
+<li><strong>DefaultThemeProvider.ts</strong>: Implements <code>IThemeProvider</code>. Manages light/dark themes.</li>
+<li><strong>MantineThemeAdapter.ts</strong>: Converts our custom Theme object to the format Mantine expects.</li>
+<li><strong>FdeApiAdapter.ts</strong>: Provides the <code>__FDE_API__</code> interface for custom apps. Exposes window management, notifications, file system, and event APIs.</li>
+<li><strong>i18n.ts</strong>: Internationalization configuration using react-i18next. Supports English and Spanish with automatic language detection.</li>
+</ul>
+<p><strong>Loaders:</strong></p>
+<ul>
+<li><strong>jsDosLoader.ts</strong>: Loads DOS game bundles for the DOS emulator app.</li>
+</ul>
+<p><strong>Migration:</strong></p>
+<ul>
+<li><strong>migrateStorage.ts</strong>: Handles migration of storage data between versions (e.g., localStorage to IndexedDB).</li>
+</ul>
+<h3 id="server-layer-packagescoresrcserver">Server Layer (<code>packages/core/src/server/</code>)<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#server-layer-packagescoresrcserver" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<p>Bun server for Docker mode. Handles API requests and WebSocket connections for file system operations, terminal PTY, and hot module replacement.</p>
+<p><strong>Entry Point:</strong></p>
+<ul>
+<li><strong>index.ts</strong>: Main server using <code>Bun.serve()</code>. Routes requests to appropriate handlers.</li>
+</ul>
+<p><strong>Routes:</strong></p>
+<ul>
+<li><strong>fs.ts</strong>: REST API for file system operations (<code>GET/POST/DELETE /api/fs/*</code>). Binds <code>WORKSPACE_PATH</code> for Docker workspace.</li>
+<li><strong>fsWatcher.ts</strong>: File watcher for custom app HMR. Monitors <code>apps/</code> directory for changes.</li>
+<li><strong>pty.ts</strong>: WebSocket handler for terminal PTY. Provides shell access in Docker mode.</li>
+<li><strong>hmr.ts</strong>: WebSocket handler for hot module replacement. Notifies connected clients when custom apps change.</li>
+<li><strong>codeServer.ts</strong>: Manages code-server processes for the CodeServer app.</li>
+</ul>
+<p><strong>API Endpoints:</strong></p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="table-container"><table><thead><tr><th>Endpoint</th><th>Method</th><th>Description</th></tr></thead><tbody><tr><td><code>/api/fs/*</code></td><td>GET/POST/DELETE</td><td>File system operations</td></tr><tr><td><code>/api/runtime</code></td><td>GET</td><td>Runtime info (docker, workspace, version)</td></tr><tr><td><code>/api/shell</code></td><td>GET</td><td>Available shells</td></tr><tr><td><code>/api/pty</code></td><td>WebSocket</td><td>Terminal PTY</td></tr><tr><td><code>/api/hmr</code></td><td>WebSocket</td><td>Hot reload for custom apps</td></tr></tbody></table></div>
+<h3 id="presentation-layer-packagescoresrccomponents">Presentation Layer (<code>packages/core/src/components/</code>)<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#presentation-layer-packagescoresrccomponents" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<p>This is where all the React stuff lives:</p>
+<ul>
+<li><strong>Components/</strong>: UI components (Window, Taskbar, DesktopIcon, Apps, etc.)
+<ul>
+<li><strong>Taskbar/</strong>: The bottom bar showing open windows and system controls</li>
+<li><strong>TaskbarContextMenu/</strong>: Right-click menu for taskbar items (window controls: minimize, maximize, restore, exit)</li>
+<li><strong>Launcher/</strong>: Start menu / app launcher with settings sections and collapsible folders</li>
+<li><strong>Window/</strong>: Draggable, resizable window component using react-rnd
+<ul>
+<li><strong>helperRegistry.ts</strong>: Core app registry — <code>initCoreRegistry()</code> registers all built-in apps</li>
+<li><strong>lazyApps.ts</strong>: Lazy imports for all core app components</li>
+<li><strong>AppReadyContext.tsx</strong>: React context for app-window communication</li>
+<li><strong>useAppReady.ts</strong>: Hook to access notifyReady and getContentData from context</li>
+</ul>
+</li>
+<li><strong>DesktopIcon/</strong>: Icons on the desktop that open apps</li>
+<li><strong>PortraitWarning/</strong>: Warning overlay for portrait orientation on mobile devices</li>
+<li><strong>Apps/</strong>: Built-in applications (Welcome, Files, Terminal, Settings, Notes/Notepad, PDF Viewer, Image Viewer, Calendar, Storybook, Uploader, DOS Emulator, MenuEdit, CodeServer)</li>
+<li><strong>Shared/</strong>: Reusable components
+<ul>
+<li><strong>AppIcon/</strong>: App icon component</li>
+<li><strong>AppLoading/</strong>: Loading spinner for lazy-loaded apps</li>
+<li><strong>AppEmptyState/</strong>: Empty state component for apps</li>
+<li><strong>BiIcon/</strong>: BoxIcons loader component</li>
+<li><strong>VscIcon/</strong>: VSCode icon wrapper component</li>
+<li><strong>CollapsibleSection/</strong>: Collapsible folder/app sections</li>
+<li><strong>ColorPicker/</strong>, <strong>IconColorPicker/</strong>: Color picker components</li>
+<li><strong>CreateItemApp/</strong>: Create files/folders modal</li>
+<li><strong>DirtyIndicator/</strong>: Unsaved changes indicator</li>
+<li><strong>DownloadProgress/</strong>: Download progress component (uses <code>useUnicodeAnimation</code>)</li>
+<li><strong>UnicodeAnimation</strong>: Thin wrapper over <code>useUnicodeAnimation</code> for rendering braille spinner frames</li>
+<li><strong>DropFileMenu/</strong>: Context menu for file drag &amp; drop (move/copy/cancel with replace confirmation)</li>
+<li><strong>ExternalLinkApp/</strong>: Reusable external link app component</li>
+<li><strong>FilePickerApp/</strong>, <strong>FolderPicker/</strong>: File picker and folder picker modals</li>
+<li><strong>GradientPicker/</strong>: Gradient color picker with presets, custom angle, and noise overlay for wallpapers</li>
+<li><strong>LanguageFlag/</strong>: SVG flag components for language selection</li>
+<li><strong>SettingsSection/</strong>: Reusable settings section wrapper</li>
+<li><strong>UnsavedChangesModal/</strong>: Modal dialog for unsaved changes (save/discard/cancel)</li>
+<li><strong>CustomAppLoader/</strong>: Dynamic app loader with error and offline states
+<ul>
+<li><strong>CustomAppLoader.tsx</strong>: Main loader component</li>
+<li><strong>CustomAppLoadingScreen.tsx</strong>: Loading screen</li>
+<li><strong>CustomAppNotSupported.tsx</strong>: Not supported message</li>
+<li><strong>CustomAppOffline.tsx</strong>: Offline message</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><strong>WindowDropOverlay</strong>: Drop target overlay for windows (compatible/incompatible visual feedback)</li>
+</ul>
+</li>
+<li><strong>Hooks/</strong>: Custom hooks (useOpenApp, useClock, useSystemTheme, useDownload, useApplyFont, useIsDirty, useCloseInterceptor, useNotifications, useFcIcon, useFiIcon, useVscIcon, useDynamicIcon, useContextMenu, useWindowButtonRegistry, useAppUpdate, useLanguageSync, useAppName, useResolvedUrl, useFolderName, useTaskbarHeight, useSearchFilter, useCollapsible, useDragDrop, useFileOperations, useGlobalDropHandler, useDropMenu, usePendingFsDropConsumer, useWindowDropZone, useFdeApi, useJsDos, useDeviceDetection, useAdaptiveDimensions, useTaskbarContextMenu, useFontDownload, useAnimationDuration)</li>
+<li><strong>Store/</strong>: Zustand stores (desktopStore.ts, settingsStore.ts, closeModalStore.ts, customAppStore.ts)</li>
+<li><strong>Utils/</strong>: Presentation utilities</li>
+</ul>
+<h3 id="shared-layer-packagescoresrc--interfaces-types-constants-utils">Shared Layer (<code>packages/core/src/</code> — interfaces, types, constants, utils)<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#shared-layer-packagescoresrc--interfaces-types-constants-utils" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<p>Code shared across all layers:</p>
+<ul>
+<li><strong>Interfaces/</strong>: TypeScript contracts (IWindowManager, IFileSystem, AppEntry, etc.)
+<ul>
+<li><strong>IComponentProps.ts</strong>: Props interfaces for all presentation components</li>
+<li><strong>IWindowContentProps.ts</strong>: Interface for app components (<code>WindowContentProps</code>, <code>MenuBarBuilder</code>)</li>
+<li><strong>WindowEntity.ts</strong>: Window entity type with contentData</li>
+<li><strong>ISettingsState.ts</strong>: Settings state interface (wallpaper, font, theme, custom colors)</li>
+<li><strong>IAppMenuElement.ts</strong>: Menu bar element types (menu, item, divider, combobox, switch, slider, text-input)</li>
+</ul>
+</li>
+<li><strong>Types/</strong>: Utility types</li>
+<li><strong>Constants/</strong>: Global constants (APPS, Colors, Icons, Animations, Fonts)</li>
+<li><strong>Utils/</strong>: Utility functions (getFileExtension, sortNodes, getAppIdForMime, buildGradientCSS, createNoiseDataUrl, resolveFileContent, buildBreadcrumbs, buildPath)</li>
+<li><strong>Testing/</strong>: Test utilities (mocks, helpers: makeWindow, makeWindowEntity, resetDesktopStore, renderWithMantine)</li>
+</ul>
+<h2 id="window-component-architecture">Window Component Architecture<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#window-component-architecture" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<p>The <code>Window</code> component uses a centralized registry pattern to manage apps:</p>
+<h3 id="windowcontentprops">WindowContentProps<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#windowcontentprops" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<p>All app components receive <code>WindowContentProps</code> instead of individual props:</p>
+<figure data-rehype-pretty-code-figure><pre tabindex="0" data-language="tsx" data-theme="github-light github-dark"><code data-language="tsx" data-theme="github-light github-dark" style="display:grid;"><span data-line><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;">interface</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;"> WindowContentProps</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;"> {</span></span>
+<span data-line><span style="--shiki-light:#E36209;--shiki-dark:#FFAB70;">  window</span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;">?:</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;"> WindowEntity</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">; </span><span style="--shiki-light:#6A737D;--shiki-dark:#6A737D;">// The window entity with metadata and contentData</span></span>
+<span data-line><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;">  notifyReady</span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;">?:</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;"> (</span><span style="--shiki-light:#E36209;--shiki-dark:#FFAB70;">contentData</span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;">?:</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;"> Record</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">&lt;</span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;">string</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">, </span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;">unknown</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">>) </span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;">=></span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;"> void</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">; </span><span style="--shiki-light:#6A737D;--shiki-dark:#6A737D;">// Callback to push data back</span></span>
+<span data-line><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">}</span></span></code></pre></figure>
+<h3 id="appregistration-system">AppRegistration System<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#appregistration-system" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<p>Apps are managed through a three-tier registry system:</p>
+<p><strong>1. Core Apps (<code>packages/core/src/components/Window/helperRegistry.ts</code> — <code>initCoreRegistry()</code>)</strong></p>
+<p>Bundled with the library and loaded asynchronously:</p>
+<ul>
+<li>Files, Settings, PDF Viewer, Image Viewer</li>
+<li>Uploader, Create Item, Notes/Notepad, Calendar</li>
+<li>Menu Editor, Device Info, Terminal, Code Server, Storybook</li>
+</ul>
+<p><strong>2. User Apps (<code>src/Presentation/Components/Window/AppRegistry.tsx</code>)</strong></p>
+<p>Application-specific apps defined in the example app:</p>
+<ul>
+<li>Welcome, LinkedIn, GitHub, DosEmulator, DOOM</li>
+</ul>
+<p><strong>3. Custom Apps (Docker runtime)</strong></p>
+<p>Dynamic apps loaded from <code>/dist-apps/apps-manifest.json</code> with hot-reload support.</p>
+<p><strong>Architecture:</strong></p>
+<pre><code>FdeDesktop.mount()
+  └── initCoreRegistry()     // Load core apps asynchronously
+      └── registerComponents(customApps)  // Merge user apps
+          └── Desktop + Taskbar render with merged registry
+</code></pre>
+<p><strong>Key Files:</strong></p>
+<ul>
+<li><code>packages/core/src/components/Window/helperRegistry.ts</code>: Core registry — <code>initCoreRegistry()</code>, <code>registerComponents()</code>, <code>getAppComponent()</code>, etc.</li>
+<li><code>packages/core/src/components/Window/lazyApps.ts</code>: Lazy imports for all core app components</li>
+<li><code>src/Presentation/Components/Window/AppRegistry.tsx</code>: Example app’s <code>userApps</code> definition</li>
+</ul>
+<p><strong>Registration in App:</strong></p>
+<figure data-rehype-pretty-code-figure><pre tabindex="0" data-language="tsx" data-theme="github-light github-dark"><code data-language="tsx" data-theme="github-light github-dark" style="display:grid;"><span data-line><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;">import</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;"> { FdeDesktop } </span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;">from</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;"> '@fde-desktop/fde-core'</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">;</span></span>
+<span data-line><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;">import</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;"> { userApps } </span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;">from</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;"> './AppRegistry'</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">;</span></span>
+<span data-line> </span>
+<span data-line><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;">function</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;"> App</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">() {</span></span>
+<span data-line><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;">  return</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;"> &lt;</span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;">FdeDesktop</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;"> customApps</span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;">=</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">{userApps}>{</span><span style="--shiki-light:#6A737D;--shiki-dark:#6A737D;">/* Desktop content */</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">}&lt;/</span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;">FdeDesktop</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">>;</span></span>
+<span data-line><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">}</span></span></code></pre></figure>
+<p>All app registration follows a consistent pattern:</p>
+<figure data-rehype-pretty-code-figure><pre tabindex="0" data-language="tsx" data-theme="github-light github-dark"><code data-language="tsx" data-theme="github-light github-dark" style="display:grid;"><span data-line><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;">const</span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;"> userApps</span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;">:</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;"> Record</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">&lt;</span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;">string</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">, </span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;">AppRegistryEntry</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">> </span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;">=</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;"> {</span></span>
+<span data-line><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">  'image-viewer'</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">: {</span></span>
+<span data-line><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">    component: ImageViewerApp,</span></span>
+<span data-line><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">    MenuBarComponent: ImageViewerMenuBar, </span><span style="--shiki-light:#6A737D;--shiki-dark:#6A737D;">// React component (recommended)</span></span>
+<span data-line><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">    appName: </span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">'Image Viewer'</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">,</span></span>
+<span data-line><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">  },</span></span>
+<span data-line><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">  pdf: {</span></span>
+<span data-line><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">    component: PdfApp,</span></span>
+<span data-line><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">    MenuBarComponent: PdfMenuBar,</span></span>
+<span data-line><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">    appName: </span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">'PDF'</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">,</span></span>
+<span data-line><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">  },</span></span>
+<span data-line><span style="--shiki-light:#6A737D;--shiki-dark:#6A737D;">  // ...other apps</span></span>
+<span data-line><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">};</span></span></code></pre></figure>
+<p><strong>Two patterns for menu bars:</strong></p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="table-container"><table><thead><tr><th>Pattern</th><th>Use When</th></tr></thead><tbody><tr><td><code>MenuBarComponent</code></td><td>Reactive state (sliders, zoom, etc.)</td></tr><tr><td><code>buildMenuBar</code></td><td>Static menus only (older apps)</td></tr></tbody></table></div>
+<p>For new apps, prefer <code>MenuBarComponent</code>. See <a href="../concepts/how-to-create-app" class="internal alias" data-slug="concepts/how-to-create-app">how-to-create-an-app.md</a> for details.</p>
+<h2 id="state-management-with-zustand">State Management with Zustand<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#state-management-with-zustand" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<p>The project uses multiple Zustand stores with persist middleware. Desktop state and settings are saved to localStorage, while the file system (nodes and blobs) is stored in IndexedDB. When you close the tab and come back, everything is where you left it.</p>
+<h3 id="desktopstore-packagescoresrcstoresdesktopstorets">desktopStore (<code>packages/core/src/stores/desktopStore.ts</code>)<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#desktopstore-packagescoresrcstoresdesktopstorets" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<p>Main store for desktop state:</p>
+<ul>
+<li><strong>windows</strong>: Array of all open windows with contentData</li>
+<li><strong>icons</strong>: Desktop icons</li>
+<li><strong>fsNodes</strong>: File system nodes (virtual file system)</li>
+<li><strong>clipboard</strong>: Clipboard content (copy/cut operations)</li>
+<li><strong>filesCurrentFolderId</strong>: Current folder in Files app</li>
+<li><strong>contextMenu</strong>: Context menu state (position, items, target)</li>
+<li><strong>notifications</strong>: System notifications</li>
+<li><strong>pendingFsDrop</strong>: Pending file drop for cross-navigation coordination (nodeId, targetFolderId, position)</li>
+<li><strong>desktopFolderId</strong>: Root folder ID for desktop icon file operations</li>
+</ul>
+<h3 id="settingsstore-packagescoresrcstoressettingsstorets">settingsStore (<code>packages/core/src/stores/settingsStore.ts</code>)<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#settingsstore-packagescoresrcstoressettingsstorets" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<p>User preferences and theme settings:</p>
+<ul>
+<li><strong>wallpaper</strong>: Background image URL or CSS gradient</li>
+<li><strong>launcherIcon</strong>: Icon for the start menu button</li>
+<li><strong>font</strong>: Selected font family</li>
+<li><strong>downloadedFonts</strong>: Array of downloaded Google Fonts</li>
+<li><strong>theme</strong>: Current theme (light/dark mode with color values)</li>
+<li><strong>themeSetManually</strong>: Whether user manually set theme (vs system)</li>
+<li><strong>customThemeColors</strong>: Custom color overrides for taskbar, window, accent</li>
+<li><strong>language</strong>: Current UI language (‘en’ | ‘es’)</li>
+<li><strong>wallpaperModule</strong>: Active wallpaper module (‘default’ for static image | ‘gradient’ for gradient wallpaper)</li>
+<li><strong>gradientConfig</strong>: Gradient wallpaper configuration (type, colors, angle, noise settings)</li>
+</ul>
+<h3 id="closemodalstore-packagescoresrcstoresclosemodalstorets">closeModalStore (<code>packages/core/src/stores/closeModalStore.ts</code>)<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#closemodalstore-packagescoresrcstoresclosemodalstorets" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<p>Handles close confirmation dialogs:</p>
+<ul>
+<li><strong>isModalOpen</strong>: Whether a close confirmation modal is displayed</li>
+<li><strong>setIsModalOpen</strong>: Toggle modal visibility</li>
+</ul>
+<h3 id="customappstore-packagescoresrcstorescustomappstorets">customAppStore (<code>packages/core/src/stores/customAppStore.ts</code>)<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#customappstore-packagescoresrcstorescustomappstorets" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<p>Manages custom (dynamic) apps in Docker mode:</p>
+<ul>
+<li><strong>customApps</strong>: Array of loaded custom app manifests</li>
+<li><strong>isLoading</strong>: Loading state for custom apps</li>
+<li><strong>error</strong>: Error state if loading fails</li>
+<li><strong>loadCustomApps</strong>: Load custom app manifests from server</li>
+<li><strong>registerApp</strong>: Register a new custom app</li>
+<li><strong>unregisterApp</strong>: Remove a custom app</li>
+</ul>
+<p>Used by <code>CustomAppLoader</code> and <code>useCustomAppHMR</code> to manage dynamic apps.</p>
+<h3 id="apptempmemory-packagescoresrcstoresapptempmemoryts">AppTempMemory (<code>packages/core/src/stores/AppTempMemory.ts</code>)<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#apptempmemory-packagescoresrcstoresapptempmemoryts" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<p>Temporary snapshots for <code>useIsDirty</code> hook:</p>
+<ul>
+<li><strong>snapshots</strong>: Record of appId → snapshot data</li>
+<li><strong>setSnapshot</strong>: Store a snapshot for an app</li>
+<li><strong>getSnapshot</strong>: Retrieve a snapshot for an app</li>
+<li><strong>clearSnapshot</strong>: Remove a snapshot</li>
+</ul>
+<p>All stores persist to localStorage automatically.</p>
+<h2 id="whats-saved-and-where">What’s Saved and Where<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#whats-saved-and-where" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<h3 id="indexeddb">IndexedDB<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#indexeddb" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="table-container"><table><thead><tr><th>Database</th><th>Store</th><th>What it saves</th></tr></thead><tbody><tr><td><code>fde-desktop-fs</code></td><td><code>nodes</code></td><td>File system nodes (files and folders metadata)</td></tr><tr><td><code>fde-desktop-fs</code></td><td><code>blobs</code></td><td>File blobs with SHA-256 hash deduplication</td></tr><tr><td><code>fde-desktop-blobs</code></td><td><code>blobs</code></td><td>Standalone blob store (used by <code>IndexedDBBlobStore</code>)</td></tr></tbody></table></div>
+<h3 id="localstorage">localStorage<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#localstorage" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="table-container"><table><thead><tr><th>Key</th><th>What it saves</th></tr></thead><tbody><tr><td><code>fde-desktop</code></td><td>Desktop state (windows, icons)</td></tr><tr><td><code>fde-desktop:settings</code></td><td>User settings (theme, wallpaper, font)</td></tr><tr><td><code>fde-desktop:appTempMemory</code></td><td>Temporary snapshots for useIsDirty hook</td></tr><tr><td><code>fde-desktop:version</code></td><td>App version (for detecting updates)</td></tr></tbody></table></div>
+<h2 id="docker-architecture">Docker Architecture<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#docker-architecture" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<p>fde-desktop supports running inside Docker containers with full filesystem access and runtime detection.</p>
+<h3 id="unified-architecture">Unified Architecture<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#unified-architecture" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<p>Both development and production use the <strong>same architecture</strong> with nginx + supervisord + gosu:</p>
+<pre><code>┌─────────────────────────────────────────────────────────────────┐
+│              Unified Architecture (Dev &amp; Prod)                   │
+├─────────────────────────────────────────────────────────────────┤
+│                                                                 │
+│  Entry: root → fix volumes → gosu bun → supervisord            │
+│                                                                 │
+│  supervisord                                                    │
+│  ├── nginx (port 8080) - proxies /api/* to localhost:3001      │
+│  ├── api (port 3001) - REST API + WebSocket                     │
+│  ├── watcher - Rebuilds apps when ./apps/* changes              │
+│  └── [vite] - Dev only: HMR for React code                     │
+│                                                                 │
+│  Dev:  Source code bind mounted, api runs from src/             │
+│  Prod: Bundled server (dist-server/), static files in image     │
+│                                                                 │
+└─────────────────────────────────────────────────────────────────┘
+</code></pre>
+<h3 id="runtime-detection">Runtime Detection<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#runtime-detection" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<p>The framework automatically detects the runtime environment:</p>
+<figure data-rehype-pretty-code-figure><pre tabindex="0" data-language="typescript" data-theme="github-light github-dark"><code data-language="typescript" data-theme="github-light github-dark" style="display:grid;"><span data-line><span style="--shiki-light:#6A737D;--shiki-dark:#6A737D;">// src/Shared/Utils/getRuntime.ts</span></span>
+<span data-line><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;">export</span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;"> function</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;"> getRuntime</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">()</span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;">:</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;"> 'browser'</span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;"> |</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;"> 'docker'</span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;"> |</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;"> 'tauri'</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;"> {</span></span>
+<span data-line><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;">  if</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;"> (</span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;">typeof</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;"> window </span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;">===</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;"> 'undefined'</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">) </span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;">return</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;"> 'browser'</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">;</span></span>
+<span data-line><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;">  if</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;"> ((window </span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;">as</span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;"> any</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">).__FDE_IN_DOCKER__ </span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;">===</span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;"> true</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">) </span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;">return</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;"> 'docker'</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">;</span></span>
+<span data-line><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;">  if</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;"> ((window </span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;">as</span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;"> any</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">).__TAURI__) </span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;">return</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;"> 'tauri'</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">;</span></span>
+<span data-line><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;">  return</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;"> 'browser'</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">;</span></span>
+<span data-line><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">}</span></span></code></pre></figure>
+<h3 id="filesystem-adapter-pattern">FileSystem Adapter Pattern<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#filesystem-adapter-pattern" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<p>The filesystem uses the Adapter pattern from the Ports &amp; Adapters architecture:</p>
+<pre><code>┌─────────────────────────────────────────────────────────────────┐
+│                    Domain Layer                                  │
+│  ┌────────────────────────────────────────────────────────────┐ │
+│  │  IFileSystem (Port/Interface)                              │ │
+│  │  - getNode(id): FSNode                                     │ │
+│  │  - createFile(name, content, parentId): FileNode          │ │
+│  │  - createFolder(name, parentId): FolderNode               │ │
+│  │  - delete(id): void                                        │ │
+│  └────────────────────────────────────────────────────────────┘ │
+│                           ▲                                      │
+│                           │ depends on                           │
+└───────────────────────────┼─────────────────────────────────────┘
+                            │
+┌───────────────────────────┼─────────────────────────────────────┐
+│                    Infrastructure Layer                          │
+│  ┌─────────────────┐  ┌─────────────────┐  ┌────────────────┐  │
+│  │ IndexedDBFS     │  │ DockerFS        │  │ TauriFS     │  │
+│  │ (Browser)       │  │ (Container)      │  │ (Desktop)      │  │
+│  │                 │  │                  │  │                │  │
+│  │ - IndexedDB API │  │ - fetch('/api') │  │ - Node fs      │  │
+│  │ - Blob storage  │  │ - REST endpoints │  │ - tauri     │  │
+│  └─────────────────┘  └─────────────────┘  └────────────────┘  │
+└─────────────────────────────────────────────────────────────────┘
+</code></pre>
+<p>For detailed documentation, see the related wiki pages listed in the sources.</p></article><hr/><div class="page-footer"></div></div><div class="right sidebar"><div class="graph"><h3>Graph View</h3><div class="graph-outer"><div class="graph-container" data-cfg="{&quot;drag&quot;:true,&quot;zoom&quot;:true,&quot;depth&quot;:1,&quot;scale&quot;:1.1,&quot;repelForce&quot;:0.5,&quot;centerForce&quot;:0.3,&quot;linkDistance&quot;:30,&quot;fontSize&quot;:0.6,&quot;opacityScale&quot;:1,&quot;showTags&quot;:true,&quot;removeTags&quot;:[],&quot;focusOnHover&quot;:false,&quot;enableRadial&quot;:false}"></div><button class="global-graph-icon" aria-label="Global Graph"><svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 55 55" fill="currentColor" xml:space="preserve"><path d="M49,0c-3.309,0-6,2.691-6,6c0,1.035,0.263,2.009,0.726,2.86l-9.829,9.829C32.542,17.634,30.846,17,29,17
+                s-3.542,0.634-4.898,1.688l-7.669-7.669C16.785,10.424,17,9.74,17,9c0-2.206-1.794-4-4-4S9,6.794,9,9s1.794,4,4,4
+                c0.74,0,1.424-0.215,2.019-0.567l7.669,7.669C21.634,21.458,21,23.154,21,25s0.634,3.542,1.688,4.897L10.024,42.562
+                C8.958,41.595,7.549,41,6,41c-3.309,0-6,2.691-6,6s2.691,6,6,6s6-2.691,6-6c0-1.035-0.263-2.009-0.726-2.86l12.829-12.829
+                c1.106,0.86,2.44,1.436,3.898,1.619v10.16c-2.833,0.478-5,2.942-5,5.91c0,3.309,2.691,6,6,6s6-2.691,6-6c0-2.967-2.167-5.431-5-5.91
+                v-10.16c1.458-0.183,2.792-0.759,3.898-1.619l7.669,7.669C41.215,39.576,41,40.26,41,41c0,2.206,1.794,4,4,4s4-1.794,4-4
+                s-1.794-4-4-4c-0.74,0-1.424,0.215-2.019,0.567l-7.669-7.669C36.366,28.542,37,26.846,37,25s-0.634-3.542-1.688-4.897l9.665-9.665
+                C46.042,11.405,47.451,12,49,12c3.309,0,6-2.691,6-6S52.309,0,49,0z M11,9c0-1.103,0.897-2,2-2s2,0.897,2,2s-0.897,2-2,2
+                S11,10.103,11,9z M6,51c-2.206,0-4-1.794-4-4s1.794-4,4-4s4,1.794,4,4S8.206,51,6,51z M33,49c0,2.206-1.794,4-4,4s-4-1.794-4-4
+                s1.794-4,4-4S33,46.794,33,49z M29,31c-3.309,0-6-2.691-6-6s2.691-6,6-6s6,2.691,6,6S32.309,31,29,31z M47,41c0,1.103-0.897,2-2,2
+                s-2-0.897-2-2s0.897-2,2-2S47,39.897,47,41z M49,10c-2.206,0-4-1.794-4-4s1.794-4,4-4s4,1.794,4,4S51.206,10,49,10z"></path></svg></button></div><div class="global-graph-outer"><div class="global-graph-container" data-cfg="{&quot;drag&quot;:true,&quot;zoom&quot;:true,&quot;depth&quot;:-1,&quot;scale&quot;:0.9,&quot;repelForce&quot;:0.5,&quot;centerForce&quot;:0.2,&quot;linkDistance&quot;:30,&quot;fontSize&quot;:0.6,&quot;opacityScale&quot;:1,&quot;showTags&quot;:true,&quot;removeTags&quot;:[],&quot;focusOnHover&quot;:true,&quot;enableRadial&quot;:true}"></div></div></div><div class="toc desktop-only"><button type="button" class="toc-header" aria-controls="toc-3" aria-expanded="true"><h3>Table of Contents</h3><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="fold"><polyline points="6 9 12 15 18 9"></polyline></svg></button><ul id="list-1" class="toc-content overflow"><li class="depth-0"><a href="#architecture" data-for="architecture">Architecture</a></li><li class="depth-1"><a href="#the-tech-stack" data-for="the-tech-stack">The Tech Stack</a></li><li class="depth-1"><a href="#project-structure-overview" data-for="project-structure-overview">Project Structure Overview</a></li><li class="depth-2"><a href="#packagescore--the-library" data-for="packagescore--the-library">packages/core/ — The Library</a></li><li class="depth-2"><a href="#src--the-example-app" data-for="src--the-example-app">src/ — The Example App</a></li><li class="depth-2"><a href="#how-they-connect" data-for="how-they-connect">How They Connect</a></li><li class="depth-1"><a href="#hexagonal-architecture-ports--adapters" data-for="hexagonal-architecture-ports--adapters">Hexagonal Architecture (Ports &amp; Adapters)</a></li><li class="depth-2"><a href="#domain-layer-packagescoresrcdomain" data-for="domain-layer-packagescoresrcdomain">Domain Layer (packages/core/src/domain/)</a></li><li class="depth-2"><a href="#application-layer-interfaces-in-packagescoresrcinterfaces" data-for="application-layer-interfaces-in-packagescoresrcinterfaces">Application Layer (interfaces in packages/core/src/interfaces/)</a></li><li class="depth-2"><a href="#infrastructure-layer-packagescoresrcinfrastructure" data-for="infrastructure-layer-packagescoresrcinfrastructure">Infrastructure Layer (packages/core/src/infrastructure/)</a></li><li class="depth-2"><a href="#server-layer-packagescoresrcserver" data-for="server-layer-packagescoresrcserver">Server Layer (packages/core/src/server/)</a></li><li class="depth-2"><a href="#presentation-layer-packagescoresrccomponents" data-for="presentation-layer-packagescoresrccomponents">Presentation Layer (packages/core/src/components/)</a></li><li class="depth-2"><a href="#shared-layer-packagescoresrc--interfaces-types-constants-utils" data-for="shared-layer-packagescoresrc--interfaces-types-constants-utils">Shared Layer (packages/core/src/ — interfaces, types, constants, utils)</a></li><li class="depth-1"><a href="#window-component-architecture" data-for="window-component-architecture">Window Component Architecture</a></li><li class="depth-2"><a href="#windowcontentprops" data-for="windowcontentprops">WindowContentProps</a></li><li class="depth-2"><a href="#appregistration-system" data-for="appregistration-system">AppRegistration System</a></li><li class="depth-1"><a href="#state-management-with-zustand" data-for="state-management-with-zustand">State Management with Zustand</a></li><li class="depth-2"><a href="#desktopstore-packagescoresrcstoresdesktopstorets" data-for="desktopstore-packagescoresrcstoresdesktopstorets">desktopStore (packages/core/src/stores/desktopStore.ts)</a></li><li class="depth-2"><a href="#settingsstore-packagescoresrcstoressettingsstorets" data-for="settingsstore-packagescoresrcstoressettingsstorets">settingsStore (packages/core/src/stores/settingsStore.ts)</a></li><li class="depth-2"><a href="#closemodalstore-packagescoresrcstoresclosemodalstorets" data-for="closemodalstore-packagescoresrcstoresclosemodalstorets">closeModalStore (packages/core/src/stores/closeModalStore.ts)</a></li><li class="depth-2"><a href="#customappstore-packagescoresrcstorescustomappstorets" data-for="customappstore-packagescoresrcstorescustomappstorets">customAppStore (packages/core/src/stores/customAppStore.ts)</a></li><li class="depth-2"><a href="#apptempmemory-packagescoresrcstoresapptempmemoryts" data-for="apptempmemory-packagescoresrcstoresapptempmemoryts">AppTempMemory (packages/core/src/stores/AppTempMemory.ts)</a></li><li class="depth-1"><a href="#whats-saved-and-where" data-for="whats-saved-and-where">What’s Saved and Where</a></li><li class="depth-2"><a href="#indexeddb" data-for="indexeddb">IndexedDB</a></li><li class="depth-2"><a href="#localstorage" data-for="localstorage">localStorage</a></li><li class="depth-1"><a href="#docker-architecture" data-for="docker-architecture">Docker Architecture</a></li><li class="depth-2"><a href="#unified-architecture" data-for="unified-architecture">Unified Architecture</a></li><li class="depth-2"><a href="#runtime-detection" data-for="runtime-detection">Runtime Detection</a></li><li class="depth-2"><a href="#filesystem-adapter-pattern" data-for="filesystem-adapter-pattern">FileSystem Adapter Pattern</a></li><li class="overflow-end"></li></ul></div><div class="backlinks"><h3>Backlinks</h3><ul id="list-2" class="overflow"><li><a href="../concepts/docker/docker-troubleshooting" class="internal">Docker Troubleshooting</a></li><li><a href="../entities/apps/chat-app" class="internal">Chat Package</a></li><li><a href="../" class="internal">index</a></li><li><a href="../overview/documentation-index" class="internal">Documentation Index</a></li><li class="overflow-end"></li></ul></div></div><footer class><p>Created with <a href="https://quartz.jzhao.xyz/">Quartz v4.5.2</a> © 2026</p><ul><li><a href="https://github.com/jackyzha0/quartz">GitHub</a></li><li><a href="https://discord.gg/cRFFHYye7t">Discord Community</a></li></ul></footer></div></div></body><script type="application/javascript" data-persist="true">function n(){let t=this.parentElement;t.classList.toggle("is-collapsed");let e=t.getElementsByClassName("callout-content")[0];if(!e)return;let l=t.classList.contains("is-collapsed");e.style.gridTemplateRows=l?"0fr":"1fr"}function c(){let t=document.getElementsByClassName("callout is-collapsible");for(let e of t){let l=e.getElementsByClassName("callout-title")[0],s=e.getElementsByClassName("callout-content")[0];if(!l||!s)continue;l.addEventListener("click",n),window.addCleanup(()=>l.removeEventListener("click",n));let o=e.classList.contains("is-collapsed");s.style.gridTemplateRows=o?"0fr":"1fr"}}document.addEventListener("nav",c);
+</script><script type="module" data-persist="true">function E(a,e){if(!a)return;function t(o){o.target===this&&(o.preventDefault(),o.stopPropagation(),e())}function n(o){o.key.startsWith("Esc")&&(o.preventDefault(),e())}a?.addEventListener("click",t),window.addCleanup(()=>a?.removeEventListener("click",t)),document.addEventListener("keydown",n),window.addCleanup(()=>document.removeEventListener("keydown",n))}function f(a){for(;a.firstChild;)a.removeChild(a.firstChild)}var m=class{constructor(e,t){this.container=e;this.content=t;this.setupEventListeners(),this.setupNavigationControls(),this.resetTransform()}isDragging=!1;startPan={x:0,y:0};currentPan={x:0,y:0};scale=1;MIN_SCALE=.5;MAX_SCALE=3;cleanups=[];setupEventListeners(){let e=this.onMouseDown.bind(this),t=this.onMouseMove.bind(this),n=this.onMouseUp.bind(this),o=this.onTouchStart.bind(this),r=this.onTouchMove.bind(this),i=this.onTouchEnd.bind(this),s=this.resetTransform.bind(this);this.container.addEventListener("mousedown",e),document.addEventListener("mousemove",t),document.addEventListener("mouseup",n),this.container.addEventListener("touchstart",o,{passive:!1}),document.addEventListener("touchmove",r,{passive:!1}),document.addEventListener("touchend",i),window.addEventListener("resize",s),this.cleanups.push(()=>this.container.removeEventListener("mousedown",e),()=>document.removeEventListener("mousemove",t),()=>document.removeEventListener("mouseup",n),()=>this.container.removeEventListener("touchstart",o),()=>document.removeEventListener("touchmove",r),()=>document.removeEventListener("touchend",i),()=>window.removeEventListener("resize",s))}cleanup(){for(let e of this.cleanups)e()}setupNavigationControls(){let e=document.createElement("div");e.className="mermaid-controls";let t=this.createButton("+",()=>this.zoom(.1)),n=this.createButton("-",()=>this.zoom(-.1)),o=this.createButton("Reset",()=>this.resetTransform());e.appendChild(n),e.appendChild(o),e.appendChild(t),this.container.appendChild(e)}createButton(e,t){let n=document.createElement("button");return n.textContent=e,n.className="mermaid-control-button",n.addEventListener("click",t),window.addCleanup(()=>n.removeEventListener("click",t)),n}onMouseDown(e){e.button===0&&(this.isDragging=!0,this.startPan={x:e.clientX-this.currentPan.x,y:e.clientY-this.currentPan.y},this.container.style.cursor="grabbing")}onMouseMove(e){this.isDragging&&(e.preventDefault(),this.currentPan={x:e.clientX-this.startPan.x,y:e.clientY-this.startPan.y},this.updateTransform())}onMouseUp(){this.isDragging=!1,this.container.style.cursor="grab"}onTouchStart(e){if(e.touches.length!==1)return;this.isDragging=!0;let t=e.touches[0];this.startPan={x:t.clientX-this.currentPan.x,y:t.clientY-this.currentPan.y}}onTouchMove(e){if(!this.isDragging||e.touches.length!==1)return;e.preventDefault();let t=e.touches[0];this.currentPan={x:t.clientX-this.startPan.x,y:t.clientY-this.startPan.y},this.updateTransform()}onTouchEnd(){this.isDragging=!1}zoom(e){let t=Math.min(Math.max(this.scale+e,this.MIN_SCALE),this.MAX_SCALE),n=this.content.getBoundingClientRect(),o=n.width/2,r=n.height/2,i=t-this.scale;this.currentPan.x-=o*i,this.currentPan.y-=r*i,this.scale=t,this.updateTransform()}updateTransform(){this.content.style.transform=`translate(${this.currentPan.x}px, ${this.currentPan.y}px) scale(${this.scale})`}resetTransform(){let t=this.content.querySelector("svg").getBoundingClientRect(),n=t.width/this.scale,o=t.height/this.scale;this.scale=1,this.currentPan={x:(this.container.clientWidth-n)/2,y:(this.container.clientHeight-o)/2},this.updateTransform()}},T=["--secondary","--tertiary","--gray","--light","--lightgray","--highlight","--dark","--darkgray","--codeFont"],y;document.addEventListener("nav",async()=>{let e=document.querySelector(".center").querySelectorAll("code.mermaid");if(e.length===0)return;y||=await import("https://cdnjs.cloudflare.com/ajax/libs/mermaid/11.4.0/mermaid.esm.min.mjs");let t=y.default,n=new WeakMap;for(let r of e)n.set(r,r.innerText);async function o(){for(let s of e){s.removeAttribute("data-processed");let c=n.get(s);c&&(s.innerHTML=c)}let r=T.reduce((s,c)=>(s[c]=window.getComputedStyle(document.documentElement).getPropertyValue(c),s),{}),i=document.documentElement.getAttribute("saved-theme")==="dark";t.initialize({startOnLoad:!1,securityLevel:"loose",theme:i?"dark":"base",themeVariables:{fontFamily:r["--codeFont"],primaryColor:r["--light"],primaryTextColor:r["--darkgray"],primaryBorderColor:r["--tertiary"],lineColor:r["--darkgray"],secondaryColor:r["--secondary"],tertiaryColor:r["--tertiary"],clusterBkg:r["--light"],edgeLabelBackground:r["--highlight"]}}),await t.run({nodes:e})}await o(),document.addEventListener("themechange",o),window.addCleanup(()=>document.removeEventListener("themechange",o));for(let r=0;r<e.length;r++){let v=function(){let g=l.querySelector("#mermaid-space"),h=l.querySelector(".mermaid-content");if(!h)return;f(h);let w=i.querySelector("svg").cloneNode(!0);h.appendChild(w),l.classList.add("active"),g.style.cursor="grab",u=new m(g,h)},M=function(){l.classList.remove("active"),u?.cleanup(),u=null},i=e[r],s=i.parentElement,c=s.querySelector(".clipboard-button"),d=s.querySelector(".expand-button"),p=window.getComputedStyle(c),L=c.offsetWidth+parseFloat(p.marginLeft||"0")+parseFloat(p.marginRight||"0");d.style.right=`calc(${L}px + 0.3rem)`,s.prepend(d);let l=s.querySelector("#mermaid-container");if(!l)return;let u=null;d.addEventListener("click",v),E(l,M),window.addCleanup(()=>{u?.cleanup(),d.removeEventListener("click",v)})}});
+</script><script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/copy-tex.min.js" type="application/javascript" data-persist="true"></script><script src="../postscript.js" type="module" data-persist="true"></script></html>

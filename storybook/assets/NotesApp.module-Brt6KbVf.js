@@ -1,0 +1,1 @@
+import{n as e}from"./chunk-jRWAZmH_.js";var t,n,r,i=e((()=>{t=`_container_1k8pc_1`,n=`_editorContent_1k8pc_24`,r={container:t,editorContent:n}}));export{i as n,r as t};

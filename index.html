@@ -1,0 +1,140 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <script>
+      window.__FDE_IN_DOCKER__ = false;
+      window.__IS_DEV__ = false;
+    </script>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+    <link rel="manifest" href="/manifest.json" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#1a1a2e" />
+
+    <!-- Primary Meta Tags -->
+    <title>FDE Desktop - Web Desktop Environment</title>
+    <meta name="title" content="FDE Desktop - Web Desktop Environment" />
+    <meta
+      name="description"
+      content="A web-based desktop environment built with React, TypeScript, and Mantine. Run desktop apps in your browser."
+    />
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://frannunpal.github.io/" />
+    <meta property="og:title" content="FDE Desktop - Web Desktop Environment" />
+    <meta
+      property="og:description"
+      content="A web-based desktop environment built with React, TypeScript, and Mantine. Run desktop apps in your browser."
+    />
+    <meta property="og:image" content="https://frannunpal.github.io/og-image.png" />
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:url" content="https://frannunpal.github.io/" />
+    <meta name="twitter:title" content="FDE Desktop - Web Desktop Environment" />
+    <meta
+      name="twitter:description"
+      content="A web-based desktop environment built with React, TypeScript, and Mantine. Run desktop apps in your browser."
+    />
+    <meta name="twitter:image" content="https://frannunpal.github.io/og-image.png" />
+
+    <style>
+      #initial-loader {
+        position: fixed;
+        inset: 0;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        background: linear-gradient(135deg, #1e3a5f 0%, #1a2744 40%, #0f1f3d 100%);
+        color: rgba(255, 255, 255, 0.87);
+        font-family:
+          system-ui,
+          -apple-system,
+          sans-serif;
+        z-index: 10000;
+        transition: opacity 0.3s ease-out, transform 0.3s ease-out;
+      }
+      #initial-loader.hidden {
+        opacity: 0;
+        transform: scale(1.02);
+        pointer-events: none;
+      }
+      .loader-logo {
+        font-size: 2.2rem;
+        font-weight: 800;
+        letter-spacing: 0.35em;
+        color: #339af0;
+        margin-bottom: 28px;
+        animation: logoFadeIn 0.6s ease-out forwards;
+        opacity: 0;
+      }
+      .loader-bar-wrap {
+        width: 120px;
+        height: 2px;
+        background: rgba(255, 255, 255, 0.12);
+        border-radius: 2px;
+        overflow: hidden;
+      }
+      .loader-bar-fill {
+        width: 55%;
+        height: 100%;
+        background: linear-gradient(90deg, #339af0, #74c0fc);
+        border-radius: 2px;
+        animation: barSlide 1.4s ease-in-out infinite;
+      }
+      .loader-subtitle {
+        margin-top: 20px;
+        font-size: 11px;
+        letter-spacing: 0.15em;
+        text-transform: uppercase;
+        color: rgba(255, 255, 255, 0.3);
+        animation: logoFadeIn 0.6s 0.2s ease-out forwards;
+        opacity: 0;
+      }
+      @keyframes logoFadeIn {
+        from { opacity: 0; transform: translateY(6px); }
+        to   { opacity: 1; transform: translateY(0); }
+      }
+      @keyframes barSlide {
+        0%   { transform: translateX(-110%); }
+        100% { transform: translateX(210%); }
+      }
+      @media (prefers-color-scheme: light) {
+        #initial-loader {
+          background: linear-gradient(135deg, #dbeafe 0%, #bfdbfe 40%, #93c5fd 100%);
+          color: #1e3a5f;
+        }
+        .loader-logo { color: #1d4ed8; }
+        .loader-bar-fill { background: linear-gradient(90deg, #1d4ed8, #3b82f6); }
+        .loader-bar-wrap { background: rgba(0, 0, 0, 0.1); }
+        .loader-subtitle { color: rgba(0, 0, 0, 0.3); }
+      }
+    </style>
+    <script type="module" crossorigin src="/assets/index-BQSCvDrj.js"></script>
+    <link rel="modulepreload" crossorigin href="/assets/rolldown-runtime-BYbx6iT9.js">
+    <link rel="modulepreload" crossorigin href="/assets/react-vendor-D0pMdxwY.js">
+    <link rel="modulepreload" crossorigin href="/assets/mantine-Dq4HeX0c.js">
+    <link rel="modulepreload" crossorigin href="/assets/xterm-CeNcDbCU.js">
+    <link rel="modulepreload" crossorigin href="/assets/motion-B_MbhXWA.js">
+    <link rel="modulepreload" crossorigin href="/assets/app-terminal-C5gkf8Wi.js">
+    <link rel="modulepreload" crossorigin href="/assets/tanstack-query-BfRv8sIW.js">
+    <link rel="modulepreload" crossorigin href="/assets/vendor-BRjnyXBj.js">
+    <link rel="stylesheet" crossorigin href="/assets/mantine-CWVKp5Zr.css">
+    <link rel="stylesheet" crossorigin href="/assets/xterm-BrP-ENHg.css">
+    <link rel="stylesheet" crossorigin href="/assets/app-terminal-BZVhWnTg.css">
+    <link rel="stylesheet" crossorigin href="/assets/vendor-CVWVvIfF.css">
+    <link rel="stylesheet" crossorigin href="/assets/index-C3gvZnrK.css">
+  </head>
+  <body>
+    <div id="initial-loader">
+      <div class="loader-logo">FDE</div>
+      <div class="loader-bar-wrap"><div class="loader-bar-fill"></div></div>
+      <div class="loader-subtitle">Desktop Environment</div>
+    </div>
+    <div id="root"></div>
+  </body>
+</html>
