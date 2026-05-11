@@ -1,0 +1,61 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 550 400">
+  <defs>
+    <pattern id="g6" width="20" height="20" patternUnits="userSpaceOnUse">
+      <path d="M 20 0 L 0 0 0 20" fill="none" stroke="#1e293b" stroke-width="0.5"/>
+    </pattern>
+  </defs>
+  
+  <rect width="100%" height="100%" fill="#0f172a"/>
+  <rect width="100%" height="100%" fill="url(#g6)"/>
+  
+  <!-- Locales/ folder -->
+  <rect x="30" y="25" width="490" height="350" rx="8" fill="rgba(8, 51, 68, 0.2)" stroke="#22d3ee" stroke-width="1.5"/>
+  <text x="50" y="50" fill="#22d3ee" font-size="12" font-weight="600" font-family="JetBrains Mono, monospace">src/Shared/Locales/</text>
+  
+  <!-- en/ folder -->
+  <rect x="50" y="70" width="200" height="290" rx="6" fill="rgba(6, 78, 59, 0.2)" stroke="#34d399" stroke-width="1"/>
+  <text x="70" y="95" fill="#34d399" font-size="11" font-weight="600" font-family="JetBrains Mono, monospace">en/</text>
+  
+  <!-- en files -->
+  <rect x="60" y="110" width="180" height="30" rx="3" fill="rgba(30, 41, 59, 0.6)" stroke="#475569" stroke-width="0.5"/>
+  <text x="150" y="130" fill="white" font-size="9" text-anchor="middle" font-family="JetBrains Mono, monospace">common.json</text>
+  
+  <rect x="60" y="145" width="180" height="30" rx="3" fill="rgba(30, 41, 59, 0.6)" stroke="#475569" stroke-width="0.5"/>
+  <text x="150" y="165" fill="white" font-size="9" text-anchor="middle" font-family="JetBrains Mono, monospace">apps.json</text>
+  
+  <rect x="60" y="180" width="180" height="30" rx="3" fill="rgba(30, 41, 59, 0.6)" stroke="#475569" stroke-width="0.5"/>
+  <text x="150" y="200" fill="white" font-size="9" text-anchor="middle" font-family="JetBrains Mono, monospace">menuedit.json</text>
+  
+  <rect x="60" y="215" width="180" height="30" rx="3" fill="rgba(30, 41, 59, 0.6)" stroke="#475569" stroke-width="0.5"/>
+  <text x="150" y="235" fill="white" font-size="9" text-anchor="middle" font-family="JetBrains Mono, monospace">settings.json</text>
+  
+  <rect x="60" y="250" width="180" height="30" rx="3" fill="rgba(30, 41, 59, 0.6)" stroke="#475569" stroke-width="0.5"/>
+  <text x="150" y="270" fill="white" font-size="9" text-anchor="middle" font-family="JetBrains Mono, monospace">window.json</text>
+  
+  <rect x="60" y="285" width="180" height="30" rx="3" fill="rgba(30, 41, 59, 0.6)" stroke="#475569" stroke-width="0.5"/>
+  <text x="150" y="305" fill="white" font-size="9" text-anchor="middle" font-family="JetBrains Mono, monospace">contextMenu.json</text>
+  
+  <rect x="60" y="320" width="180" height="30" rx="3" fill="rgba(30, 41, 59, 0.6)" stroke="#475569" stroke-width="0.5"/>
+  <text x="150" y="340" fill="white" font-size="9" text-anchor="middle" font-family="JetBrains Mono, monospace">notifications.json</text>
+  
+  <!-- es/ folder -->
+  <rect x="280" y="70" width="220" height="70" rx="6" fill="rgba(76, 29, 149, 0.2)" stroke="#a78bfa" stroke-width="1"/>
+  <text x="300" y="95" fill="#a78bfa" font-size="11" font-weight="600" font-family="JetBrains Mono, monospace">es/</text>
+  <text x="300" y="120" fill="#94a3b8" font-size="8" font-family="JetBrains Mono, monospace">(same structure as en/)</text>
+  
+  <!-- i18n.ts -->
+  <rect x="280" y="160" width="220" height="60" rx="4" fill="rgba(251, 146, 60, 0.15)" stroke="#fb923c" stroke-width="1"/>
+  <text x="390" y="185" fill="white" font-size="10" font-weight="500" text-anchor="middle" font-family="JetBrains Mono, monospace">i18n.ts</text>
+  <text x="390" y="205" fill="#94a3b8" font-size="8" text-anchor="middle" font-family="JetBrains Mono, monospace">react-i18next config</text>
+  <text x="390" y="215" fill="#64748b" font-size="7" text-anchor="middle" font-family="JetBrains Mono, monospace">LanguageDetector</text>
+  
+  <!-- useLanguageSync -->
+  <rect x="280" y="235" width="220" height="60" rx="4" fill="rgba(22, 163, 74, 0.15)" stroke="#22c55e" stroke-width="1"/>
+  <text x="390" y="260" fill="white" font-size="10" font-weight="500" text-anchor="middle" font-family="JetBrains Mono, monospace">useLanguageSync()</text>
+  <text x="390" y="280" fill="#94a3b8" font-size="8" text-anchor="middle" font-family="JetBrains Mono, monospace">Zustand ↔ i18n sync</text>
+  
+  <!-- Legend -->
+  <rect x="280" y="310" width="220" height="50" rx="4" fill="rgba(30, 41, 59, 0.5)" stroke="#475569" stroke-width="1"/>
+  <text x="390" y="330" fill="white" font-size="8" font-weight="500" text-anchor="middle" font-family="JetBrains Mono, monospace">Storage Key</text>
+  <text x="390" y="350" fill="#64748b" font-size="7" text-anchor="middle" font-family="JetBrains Mono, monospace">fde-desktop:language (localStorage)</text>
+</svg>
