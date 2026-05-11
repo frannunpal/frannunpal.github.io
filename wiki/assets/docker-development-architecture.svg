@@ -1,0 +1,62 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 650 400">
+  <defs>
+    <pattern id="g18" width="20" height="20" patternUnits="userSpaceOnUse">
+      <path d="M 20 0 L 0 0 0 20" fill="none" stroke="#1e293b" stroke-width="0.5"/>
+    </pattern>
+  </defs>
+  
+  <rect width="100%" height="100%" fill="#0f172a"/>
+  <rect width="100%" height="100%" fill="url(#g18)"/>
+  
+  <!-- Development Container -->
+  <rect x="10" y="10" width="630" height="280" rx="8" fill="rgba(8, 51, 68, 0.2)" stroke="#22d3ee" stroke-width="1.5"/>
+  <text x="25" y="35" fill="#22d3ee" font-size="11" font-weight="700" font-family="JetBrains Mono, monospace">Development Container (Runs as 'bun' user via gosu)</text>
+  
+  <!-- supervisord -->
+  <rect x="25" y="50" width="595" height="220" rx="6" fill="rgba(30, 41, 59, 0.4)" stroke="#475569" stroke-width="1"/>
+  <text x="40" y="70" fill="#64748b" font-size="10" font-weight="600" font-family="JetBrains Mono, monospace">supervisord</text>
+  
+  <!-- nginx -->
+  <rect x="40" y="85" width="180" height="80" rx="4" fill="rgba(59, 130, 246, 0.2)" stroke="#3b82f6" stroke-width="1"/>
+  <text x="130" y="105" fill="white" font-size="11" font-weight="600" text-anchor="middle" font-family="JetBrains Mono, monospace">nginx</text>
+  <text x="130" y="120" fill="#94a3b8" font-size="8" text-anchor="middle" font-family="JetBrains Mono, monospace">port 8080</text>
+  <rect x="50" y="130" width="85" height="25" rx="3" fill="rgba(76, 29, 149, 0.3)" stroke="#a78bfa" stroke-width="0.5"/>
+  <text x="92" y="147" fill="#e2e8f0" font-size="7" text-anchor="middle" font-family="JetBrains Mono, monospace">/api/* → 3001</text>
+  
+  <!-- api -->
+  <rect x="240" y="85" width="195" height="80" rx="4" fill="rgba(251, 146, 60, 0.15)" stroke="#fb923c" stroke-width="1"/>
+  <text x="337" y="105" fill="white" font-size="11" font-weight="600" text-anchor="middle" font-family="JetBrains Mono, monospace">api</text>
+  <text x="337" y="120" fill="#94a3b8" font-size="8" text-anchor="middle" font-family="JetBrains Mono, monospace">port 3001</text>
+  <rect x="250" y="130" width="175" height="25" rx="3" fill="rgba(30, 41, 59, 0.6)" stroke="#475569" stroke-width="0.5"/>
+  <text x="337" y="147" fill="#94a3b8" font-size="7" text-anchor="middle" font-family="JetBrains Mono, monospace">bun run server/index.ts (SOURCE!)</text>
+  
+  <!-- watcher -->
+  <rect x="450" y="85" width="155" height="50" rx="4" fill="rgba(76, 29, 149, 0.25)" stroke="#a78bfa" stroke-width="1"/>
+  <text x="527" y="107" fill="white" font-size="10" font-weight="500" text-anchor="middle" font-family="JetBrains Mono, monospace">watcher</text>
+  <text x="527" y="125" fill="#94a3b8" font-size="7" text-anchor="middle">Rebuilds on ./apps/*</text>
+  
+  <!-- vite (dev only) -->
+  <rect x="240" y="175" width="365" height="50" rx="4" fill="rgba(6, 78, 59, 0.4)" stroke="#34d399" stroke-width="1.5"/>
+  <text x="422" y="197" fill="white" font-size="11" font-weight="600" text-anchor="middle" font-family="JetBrains Mono, monospace">vite (development only)</text>
+  <text x="422" y="215" fill="#34d399" font-size="8" text-anchor="middle" font-family="JetBrains Mono, monospace">Vite dev server for HMR</text>
+  
+  <!-- Volumes section -->
+  <rect x="10" y="300" width="310" height="90" rx="6" fill="rgba(59, 130, 246, 0.15)" stroke="#3b82f6" stroke-width="1"/>
+  <text x="25" y="325" fill="#3b82f6" font-size="10" font-weight="600" font-family="JetBrains Mono, monospace">Bind mounts (dev only)</text>
+  <rect x="25" y="335" width="135" height="50" rx="4" fill="rgba(30, 41, 59, 0.6)" stroke="#475569" stroke-width="0.5"/>
+  <text x="92" y="358" fill="#94a3b8" font-size="8" text-anchor="middle" font-family="JetBrains Mono, monospace">./src</text>
+  <text x="92" y="372" fill="#64748b" font-size="7" text-anchor="middle" font-family="JetBrains Mono, monospace">source code</text>
+  <rect x="170" y="335" width="135" height="50" rx="4" fill="rgba(30, 41, 59, 0.6)" stroke="#475569" stroke-width="0.5"/>
+  <text x="237" y="358" fill="#94a3b8" font-size="8" text-anchor="middle" font-family="JetBrains Mono, monospace">./public, ./apps, ./docker</text>
+  
+  <rect x="330" y="300" width="310" height="90" rx="6" fill="rgba(76, 29, 149, 0.15)" stroke="#a78bfa" stroke-width="1"/>
+  <text x="345" y="325" fill="#a78bfa" font-size="10" font-weight="600" font-family="JetBrains Mono, monospace">Named volumes</text>
+  <rect x="345" y="335" width="280" height="50" rx="4" fill="rgba(30, 41, 59, 0.6)" stroke="#475569" stroke-width="0.5"/>
+  <text x="485" y="358" fill="#94a3b8" font-size="8" text-anchor="middle" font-family="JetBrains Mono, monospace">node_modules, dist, dist-apps, workspace</text>
+  <text x="485" y="372" fill="#64748b" font-size="7" text-anchor="middle" font-family="JetBrains Mono, monospace">persist across rebuilds</text>
+  
+  <!-- Entry note -->
+  <rect x="450" y="50" width="160" height="40" rx="4" fill="rgba(22, 33, 62, 0.6)" stroke="#22d3ee" stroke-width="0.5"/>
+  <text x="530" y="67" fill="#22d3ee" font-size="8" font-weight="500" text-anchor="middle" font-family="JetBrains Mono, monospace">Entry flow:</text>
+  <text x="530" y="80" fill="#94a3b8" font-size="7" text-anchor="middle" font-family="JetBrains Mono, monospace">root → gosu bun → supervisord</text>
+</svg>

@@ -1,0 +1,54 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 550 320">
+  <defs>
+    <marker id="arr2" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#64748b"/>
+    </marker>
+    <pattern id="g12" width="20" height="20" patternUnits="userSpaceOnUse">
+      <path d="M 20 0 L 0 0 0 20" fill="none" stroke="#1e293b" stroke-width="0.5"/>
+    </pattern>
+  </defs>
+  
+  <rect width="100%" height="100%" fill="#0f172a"/>
+  <rect width="100%" height="100%" fill="url(#g12)"/>
+  
+  <!-- Docker Mode section -->
+  <rect x="10" y="15" width="260" height="280" rx="8" fill="rgba(6, 78, 59, 0.2)" stroke="#34d399" stroke-width="1.5"/>
+  <text x="20" y="40" fill="#34d399" font-size="11" font-weight="700" font-family="JetBrains Mono, monospace">Docker Mode</text>
+  
+  <!-- XTerm -->
+  <rect x="25" y="60" width="230" height="50" rx="4" fill="rgba(59, 130, 246, 0.2)" stroke="#3b82f6" stroke-width="1"/>
+  <text x="140" y="82" fill="white" font-size="10" font-weight="500" text-anchor="middle" font-family="JetBrains Mono, monospace">XTermTerminal</text>
+  <text x="140" y="98" fill="#94a3b8" font-size="8" text-anchor="middle" font-family="JetBrains Mono, monospace">(xterm.js)</text>
+  
+  <!-- WebSocket arrows -->
+  <path d="M 90 110 L 90 140 L 140 140 L 140 170" stroke="#64748b" stroke-width="1" marker-end="url(#arr2)"/>
+  <path d="M 190 170 L 190 140 L 140 140" stroke="#64748b" stroke-width="1"/>
+  <text x="60" y="125" fill="#64748b" font-size="7" font-family="JetBrains Mono, monospace">WebSocket</text>
+  <text x="165" y="125" fill="#64748b" font-size="7" font-family="JetBrains Mono, monospace">input/output</text>
+  
+  <!-- API -->
+  <rect x="70" y="170" width="140" height="40" rx="4" fill="rgba(251, 146, 60, 0.15)" stroke="#fb923c" stroke-width="1"/>
+  <text x="140" y="192" fill="white" font-size="9" font-weight="500" text-anchor="middle" font-family="JetBrains Mono, monospace">/api/pty (Bun server)</text>
+  
+  <!-- Connection to shell -->
+  <path d="M 140 210 L 140 230" stroke="#64748b" stroke-width="1" marker-end="url(#arr2)"/>
+  
+  <!-- Shell -->
+  <rect x="70" y="235" width="140" height="35" rx="4" fill="rgba(30, 41, 59, 0.6)" stroke="#475569" stroke-width="1"/>
+  <text x="140" y="255" fill="#94a3b8" font-size="8" text-anchor="middle" font-family="JetBrains Mono, monospace">/bin/zsh /bin/sh</text>
+  <text x="140" y="265" fill="#64748b" font-size="7" text-anchor="middle" font-family="JetBrains Mono, monospace">real shell</text>
+  
+  <!-- Store -->
+  <rect x="205" y="230" width="55" height="35" rx="4" fill="rgba(76, 29, 149, 0.25)" stroke="#a78bfa" stroke-width="1"/>
+  <text x="232" y="250" fill="white" font-size="8" text-anchor="middle" font-family="JetBrains Mono, monospace">Store</text>
+  <path d="M 205 240 L 180 240" stroke="#64748b" stroke-width="1"/>
+  
+  <!-- Browser/Electron Mode section -->
+  <rect x="280" y="100" width="260" height="100" rx="8" fill="rgba(127, 29, 29, 0.2)" stroke="#ef4444" stroke-width="1.5"/>
+  <text x="295" y="125" fill="#ef4444" font-size="11" font-weight="700" font-family="JetBrains Mono, monospace">Browser/Electron</text>
+  
+  <!-- Not supported -->
+  <rect x="305" y="140" width="210" height="40" rx="4" fill="rgba(127, 29, 29, 0.3)" stroke="#ef4444" stroke-width="1"/>
+  <text x="410" y="162" fill="white" font-size="9" font-weight="500" text-anchor="middle" font-family="JetBrains Mono, monospace">TerminalNotSupported</text>
+  <text x="410" y="175" fill="#94a3b8" font-size="7" text-anchor="middle" font-family="JetBrains Mono, monospace">(placeholder)</text>
+</svg>
