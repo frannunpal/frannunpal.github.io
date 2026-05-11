@@ -1,0 +1,64 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 650 320">
+  <defs>
+    <marker id="arr3" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#64748b"/>
+    </marker>
+    <pattern id="g15" width="20" height="20" patternUnits="userSpaceOnUse">
+      <path d="M 20 0 L 0 0 0 20" fill="none" stroke="#1e293b" stroke-width="0.5"/>
+    </pattern>
+  </defs>
+  
+  <rect width="100%" height="100%" fill="#0f172a"/>
+  <rect width="100%" height="100%" fill="url(#g15)"/>
+  
+  <!-- Docker Container -->
+  <rect x="10" y="10" width="630" height="300" rx="8" fill="rgba(6, 78, 59, 0.2)" stroke="#34d399" stroke-width="1.5"/>
+  <text x="25" y="35" fill="#34d399" font-size="12" font-weight="700" font-family="JetBrains Mono, monospace">Docker Container</text>
+  
+  <!-- supervisord -->
+  <rect x="25" y="50" width="595" height="250" rx="6" fill="rgba(30, 41, 59, 0.4)" stroke="#475569" stroke-width="1"/>
+  <text x="40" y="75" fill="#64748b" font-size="10" font-weight="600" font-family="JetBrains Mono, monospace">supervisord</text>
+  
+  <!-- nginx -->
+  <rect x="40" y="90" width="180" height="100" rx="4" fill="rgba(59, 130, 246, 0.2)" stroke="#3b82f6" stroke-width="1"/>
+  <text x="130" y="110" fill="white" font-size="11" font-weight="600" text-anchor="middle" font-family="JetBrains Mono, monospace">nginx</text>
+  <text x="130" y="125" fill="#94a3b8" font-size="8" text-anchor="middle" font-family="JetBrains Mono, monospace">port 8080</text>
+  
+  <!-- nginx routes -->
+  <rect x="50" y="135" width="75" height="22" rx="3" fill="rgba(76, 29, 149, 0.3)" stroke="#a78bfa" stroke-width="0.5"/>
+  <text x="87" y="150" fill="#e2e8f0" font-size="7" text-anchor="middle" font-family="JetBrains Mono, monospace">/ → static</text>
+  
+  <rect x="50" y="162" width="75" height="22" rx="3" fill="rgba(76, 29, 149, 0.3)" stroke="#a78bfa" stroke-width="0.5"/>
+  <text x="87" y="177" fill="#e2e8f0" font-size="7" text-anchor="middle" font-family="JetBrains Mono, monospace">/api/* → 3001</text>
+  
+  <!-- api-server -->
+  <rect x="240" y="90" width="180" height="100" rx="4" fill="rgba(251, 146, 60, 0.15)" stroke="#fb923c" stroke-width="1"/>
+  <text x="330" y="110" fill="white" font-size="11" font-weight="600" text-anchor="middle" font-family="JetBrains Mono, monospace">api-server</text>
+  <text x="330" y="125" fill="#94a3b8" font-size="8" text-anchor="middle" font-family="JetBrains Mono, monospace">port 3001</text>
+  
+  <!-- API endpoints -->
+  <rect x="250" y="135" width="75" height="20" rx="2" fill="rgba(30, 41, 59, 0.6)" stroke="#475569" stroke-width="0.5"/>
+  <text x="287" y="149" fill="#94a3b8" font-size="7" text-anchor="middle" font-family="JetBrains Mono, monospace">/api/fs/*</text>
+  
+  <rect x="330" y="135" width="80" height="20" rx="2" fill="rgba(30, 41, 59, 0.6)" stroke="#475569" stroke-width="0.5"/>
+  <text x="370" y="149" fill="#94a3b8" font-size="7" text-anchor="middle" font-family="JetBrains Mono, monospace">/api/runtime</text>
+  
+  <rect x="250" y="160" width="75" height="20" rx="2" fill="rgba(30, 41, 59, 0.6)" stroke="#475569" stroke-width="0.5"/>
+  <text x="287" y="174" fill="#94a3b8" font-size="7" text-anchor="middle" font-family="JetBrains Mono, monospace">/api/shell</text>
+  
+  <rect x="330" y="160" width="80" height="20" rx="2" fill="rgba(30, 41, 59, 0.6)" stroke="#475569" stroke-width="0.5"/>
+  <text x="370" y="174" fill="#94a3b8" font-size="7" text-anchor="middle" font-family="JetBrains Mono, monospace">WebSocket</text>
+  
+  <!-- watcher -->
+  <rect x="440" y="90" width="160" height="50" rx="4" fill="rgba(76, 29, 149, 0.25)" stroke="#a78bfa" stroke-width="1"/>
+  <text x="520" y="112" fill="white" font-size="10" font-weight="500" text-anchor="middle" font-family="JetBrains Mono, monospace">watcher</text>
+  <text x="520" y="130" fill="#94a3b8" font-size="7" text-anchor="middle" font-family="JetBrains Mono, monospace">Rebuild apps on change</text>
+  
+  <!-- Connection arrows -->
+  <path d="M 130 190 L 130 210 L 287 210 L 287 190" stroke="#64748b" stroke-width="1" marker-end="url(#arr3)"/>
+  <text x="200" y="240" fill="#64748b" font-size="7" font-family="JetBrains Mono, monospace">proxy API calls</text>
+  
+  <!-- Bottom note -->
+  <rect x="40" y="260" width="560" height="35" rx="4" fill="rgba(30, 41, 59, 0.5)" stroke="#475569" stroke-width="1"/>
+  <text x="320" y="280" fill="#94a3b8" font-size="9" text-anchor="middle" font-family="JetBrains Mono, monospace">REST: File system, Runtime, Shell · WebSocket: PTY terminal, HMR</text>
+</svg>

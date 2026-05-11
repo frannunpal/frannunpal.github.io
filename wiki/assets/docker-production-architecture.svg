@@ -1,0 +1,66 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 650 400">
+  <defs>
+    <pattern id="g17" width="20" height="20" patternUnits="userSpaceOnUse">
+      <path d="M 20 0 L 0 0 0 20" fill="none" stroke="#1e293b" stroke-width="0.5"/>
+    </pattern>
+  </defs>
+  
+  <rect width="100%" height="100%" fill="#0f172a"/>
+  <rect width="100%" height="100%" fill="url(#g17)"/>
+  
+  <!-- Production Container -->
+  <rect x="10" y="10" width="630" height="300" rx="8" fill="rgba(6, 78, 59, 0.2)" stroke="#34d399" stroke-width="1.5"/>
+  <text x="25" y="35" fill="#34d399" font-size="11" font-weight="700" font-family="JetBrains Mono, monospace">Production Container (Runs as 'bun' user via gosu)</text>
+  
+  <!-- supervisord -->
+  <rect x="25" y="50" width="595" height="250" rx="6" fill="rgba(30, 41, 59, 0.4)" stroke="#475569" stroke-width="1"/>
+  <text x="40" y="70" fill="#64748b" font-size="10" font-weight="600" font-family="JetBrains Mono, monospace">supervisord</text>
+  
+  <!-- nginx -->
+  <rect x="40" y="85" width="200" height="120" rx="4" fill="rgba(59, 130, 246, 0.2)" stroke="#3b82f6" stroke-width="1"/>
+  <text x="140" y="105" fill="white" font-size="11" font-weight="600" text-anchor="middle" font-family="JetBrains Mono, monospace">nginx</text>
+  <text x="140" y="120" fill="#94a3b8" font-size="8" text-anchor="middle" font-family="JetBrains Mono, monospace">port 8080</text>
+  
+  <!-- nginx routes -->
+  <rect x="50" y="130" width="90" height="25" rx="3" fill="rgba(76, 29, 149, 0.3)" stroke="#a78bfa" stroke-width="0.5"/>
+  <text x="95" y="147" fill="#e2e8f0" font-size="7" text-anchor="middle" font-family="JetBrains Mono, monospace">/ → static</text>
+  
+  <rect x="50" y="160" width="90" height="25" rx="3" fill="rgba(76, 29, 149, 0.3)" stroke="#a78bfa" stroke-width="0.5"/>
+  <text x="95" y="177" fill="#e2e8f0" font-size="7" text-anchor="middle" font-family="JetBrains Mono, monospace">/storybook/</text>
+  
+  <rect x="145" y="130" width="90" height="25" rx="3" fill="rgba(76, 29, 149, 0.3)" stroke="#a78bfa" stroke-width="0.5"/>
+  <text x="190" y="147" fill="#e2e8f0" font-size="7" text-anchor="middle" font-family="JetBrains Mono, monospace">/dist-apps/</text>
+  
+  <rect x="145" y="160" width="90" height="25" rx="3" fill="rgba(76, 29, 149, 0.3)" stroke="#a78bfa" stroke-width="0.5"/>
+  <text x="190" y="177" fill="#e2e8f0" font-size="7" text-anchor="middle" font-family="JetBrains Mono, monospace">/api/* → 3001</text>
+  
+  <!-- api -->
+  <rect x="260" y="85" width="180" height="80" rx="4" fill="rgba(251, 146, 60, 0.15)" stroke="#fb923c" stroke-width="1"/>
+  <text x="350" y="105" fill="white" font-size="11" font-weight="600" text-anchor="middle" font-family="JetBrains Mono, monospace">api</text>
+  <text x="350" y="120" fill="#94a3b8" font-size="8" text-anchor="middle" font-family="JetBrains Mono, monospace">port 3001</text>
+  <rect x="270" y="130" width="160" height="25" rx="3" fill="rgba(30, 41, 59, 0.6)" stroke="#475569" stroke-width="0.5"/>
+  <text x="350" y="147" fill="#94a3b8" font-size="7" text-anchor="middle" font-family="JetBrains Mono, monospace">bun run dist-server/index.js</text>
+  
+  <!-- watcher -->
+  <rect x="460" y="85" width="145" height="50" rx="4" fill="rgba(76, 29, 149, 0.25)" stroke="#a78bfa" stroke-width="1"/>
+  <text x="532" y="107" fill="white" font-size="10" font-weight="500" text-anchor="middle" font-family="JetBrains Mono, monospace">watcher</text>
+  <text x="532" y="125" fill="#94a3b8" font-size="7" text-anchor="middle">Rebuilds user apps</text>
+  
+  <!-- Entry note -->
+  <rect x="260" y="175" width="360" height="40" rx="4" fill="rgba(22, 33, 62, 0.6)" stroke="#22d3ee" stroke-width="0.5"/>
+  <text x="440" y="193" fill="#22d3ee" font-size="8" font-weight="500" text-anchor="middle" font-family="JetBrains Mono, monospace">Entry: root → fix volumes → gosu bun → supervisord</text>
+  <text x="440" y="207" fill="#94a3b8" font-size="7" text-anchor="middle" font-family="JetBrains Mono, monospace">(chown workspace, dist-apps, then drop privileges)</text>
+  
+  <!-- Bottom notes -->
+  <rect x="25" y="320" width="300" height="70" rx="4" fill="rgba(127, 29, 29, 0.2)" stroke="#ef4444" stroke-width="1"/>
+  <text x="40" y="340" fill="#ef4444" font-size="9" font-weight="600" font-family="JetBrains Mono, monospace">NO source code in container</text>
+  <text x="40" y="355" fill="#94a3b8" font-size="7" font-family="JetBrains Mono, monospace">Server: bun build ./packages/core/src/server</text>
+  <text x="40" y="370" fill="#94a3b8" font-size="7" font-family="JetBrains Mono, monospace">        --outdir dist-server</text>
+  <text x="40" y="385" fill="#94a3b8" font-size="7" font-family="JetBrains Mono, monospace">Static: Baked into image</text>
+  
+  <rect x="340" y="320" width="300" height="70" rx="4" fill="rgba(6, 78, 59, 0.2)" stroke="#34d399" stroke-width="1"/>
+  <text x="355" y="340" fill="#34d399" font-size="9" font-weight="600" font-family="JetBrains Mono, monospace">Included in Production</text>
+  <text x="355" y="355" fill="#94a3b8" font-size="7" font-family="JetBrains Mono, monospace">✓ Static framework files</text>
+  <text x="355" y="370" fill="#94a3b8" font-size="7" font-family="JetBrains Mono, monospace">✓ Storybook documentation</text>
+  <text x="355" y="385" fill="#94a3b8" font-size="7" font-family="JetBrains Mono, monospace">✓ Bundled server (dist-server/)</text>
+</svg>

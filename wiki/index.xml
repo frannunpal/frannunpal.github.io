@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<rss version="2.0">
+    <channel>
+      <title>FDE Desktop Wiki</title>
+      <link>https://frannunpal.github.io/wiki</link>
+      <description>Last 10 notes on FDE Desktop Wiki</description>
+      <generator>Quartz -- quartz.jzhao.xyz</generator>
+      <item>
+    <title>index</title>
+    <link>https://frannunpal.github.io/wiki/</link>
+    <guid>https://frannunpal.github.io/wiki/</guid>
+    <description><![CDATA[ Wiki Index Content catalog. Each listed page with one-line summary. Read first to find relevant pages. ]]></description>
+    <pubDate>Mon, 11 May 2026 18:21:41 GMT</pubDate>
+  </item><item>
+    <title>log</title>
+    <link>https://frannunpal.github.io/wiki/log</link>
+    <guid>https://frannunpal.github.io/wiki/log</guid>
+    <description><![CDATA[ Wiki Log Change history and updates to the wiki. ]]></description>
+    <pubDate>Mon, 11 May 2026 18:21:41 GMT</pubDate>
+  </item><item>
+    <title>idea</title>
+    <link>https://frannunpal.github.io/wiki/concepts/idea</link>
+    <guid>https://frannunpal.github.io/wiki/concepts/idea</guid>
+    <description><![CDATA[ Cities — La Idea La premisa Escribes el nombre de una ciudad. La ciudad aparece. No hay configuración, no hay datos externos, no hay API. ]]></description>
+    <pubDate>Mon, 11 May 2026 18:21:41 GMT</pubDate>
+  </item><item>
+    <title>worker</title>
+    <link>https://frannunpal.github.io/wiki/concepts/worker</link>
+    <guid>https://frannunpal.github.io/wiki/concepts/worker</guid>
+    <description><![CDATA[ Cities — Web Worker Architecture This document describes the Web Worker implementation for city generation. ]]></description>
+    <pubDate>Mon, 11 May 2026 18:21:41 GMT</pubDate>
+  </item><item>
+    <title>docker-compose</title>
+    <link>https://frannunpal.github.io/wiki/concepts/docker/docker-compose</link>
+    <guid>https://frannunpal.github.io/wiki/concepts/docker/docker-compose</guid>
+    <description><![CDATA[ Hello! if you are here! Because the read me sent you here, greetings!. ]]></description>
+    <pubDate>Mon, 11 May 2026 18:21:41 GMT</pubDate>
+  </item><item>
+    <title>3d-rendering</title>
+    <link>https://frannunpal.github.io/wiki/_archive/concepts/3d-rendering</link>
+    <guid>https://frannunpal.github.io/wiki/_archive/concepts/3d-rendering</guid>
+    <description><![CDATA[ Cities — 3D Rendering Documentación del sistema de renderizado 3D (MapCanvas3D) y los builders de geometría. ]]></description>
+    <pubDate>Mon, 11 May 2026 18:21:41 GMT</pubDate>
+  </item><item>
+    <title>TheatreEditor</title>
+    <link>https://frannunpal.github.io/wiki/_archive/concepts/TheatreEditor</link>
+    <guid>https://frannunpal.github.io/wiki/_archive/concepts/TheatreEditor</guid>
+    <description><![CDATA[ TheatreEditor - Integration Documentation Theatre.js visual editor integration for real-time lighting parameter editing in DEV mode. ]]></description>
+    <pubDate>Mon, 11 May 2026 18:21:41 GMT</pubDate>
+  </item><item>
+    <title>scenedebugger</title>
+    <link>https://frannunpal.github.io/wiki/_archive/entities/scenedebugger</link>
+    <guid>https://frannunpal.github.io/wiki/_archive/entities/scenedebugger</guid>
+    <description><![CDATA[ SceneDebugger Needle Inspector-style devtools panel for the Cities 3D view. Activated by the “Editor” toggle (dev-only). ]]></description>
+    <pubDate>Mon, 11 May 2026 18:21:41 GMT</pubDate>
+  </item><item>
+    <title>SCHEMA</title>
+    <link>https://frannunpal.github.io/wiki/SCHEMA</link>
+    <guid>https://frannunpal.github.io/wiki/SCHEMA</guid>
+    <description><![CDATA[ Wiki Schema Domain This wiki documents fde-desktop — a web desktop environment with hexagonal architecture, React 19, TypeScript and TanStack. ]]></description>
+    <pubDate>Mon, 11 May 2026 18:21:41 GMT</pubDate>
+  </item><item>
+    <title>Environment Variables</title>
+    <link>https://frannunpal.github.io/wiki/reference/environment-variables</link>
+    <guid>https://frannunpal.github.io/wiki/reference/environment-variables</guid>
+    <description><![CDATA[ Environment Variables This document lists all environment variables used across the project, where they are defined, and where they should be placed. ]]></description>
+    <pubDate>Sun, 10 May 2026 00:00:00 GMT</pubDate>
+  </item>
+    </channel>
+  </rss>
