@@ -1,6 +1,6 @@
 # FDE Desktop Environment
 
-[[image.md]]
+![fde-desktop screenshot](og-image.png)
 
 ## Salutations From a human to human :D
 
