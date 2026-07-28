@@ -1,0 +1,1 @@
+import{n as e}from"./rolldown-runtime-CNC7AqOf.js";import{r as t,t as n}from"./createWindowStateStore-Bv6qMDes.js";var r,i,a=e((()=>{t(),r=n(),i=e=>r(t=>t.states[e]?.isDirty??!1)}));export{i as n,r,a as t};

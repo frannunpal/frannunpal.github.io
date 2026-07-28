@@ -1,0 +1,23 @@
+import{n as e}from"./rolldown-runtime-DAXXjFlN.js";import{a as t}from"./settingsStore-q98D6Qe4.js";import{t as n}from"./jsx-runtime-CFwixLRt.js";import{t as r}from"./iframe-wqeD3IfR.js";import{n as i,t as a}from"./LauncherSettings-BCWXs9uG.js";var o,s,c,l,u;e((()=>{i(),r(),o=n(),s={title:`Settings/Launcher`,component:a,parameters:{layout:`padded`},decorators:[e=>(0,o.jsx)(`div`,{style:{maxWidth:600,margin:`0 auto`,height:500},children:(0,o.jsx)(e,{})})]},c={parameters:{docs:{description:{story:`Launcher settings with default icon selected.`}}}},l={decorators:[e=>(t.setState({launcherIcon:`FcAndroid`}),(0,o.jsx)(e,{}))],parameters:{docs:{description:{story:`Launcher settings with a custom icon selected.`}}}},c.parameters={...c.parameters,docs:{...c.parameters?.docs,source:{originalSource:`{
+  parameters: {
+    docs: {
+      description: {
+        story: 'Launcher settings with default icon selected.'
+      }
+    }
+  }
+}`,...c.parameters?.docs?.source}}},l.parameters={...l.parameters,docs:{...l.parameters?.docs,source:{originalSource:`{
+  decorators: [Story => {
+    useSettingsStore.setState({
+      launcherIcon: 'FcAndroid'
+    });
+    return <Story />;
+  }],
+  parameters: {
+    docs: {
+      description: {
+        story: 'Launcher settings with a custom icon selected.'
+      }
+    }
+  }
+}`,...l.parameters?.docs?.source}}},u=[`Default`,`CustomIcon`]}))();export{l as CustomIcon,c as Default,u as __namedExportsOrder,s as default};
