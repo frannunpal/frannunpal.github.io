@@ -1,0 +1,1 @@
+import{n as e}from"./rolldown-runtime-CNC7AqOf.js";import{t}from"./react-vendor-ChRTX0B8.js";import{ot as n,qr as r,rt as i}from"./mantine-_CbvvRfu.js";var a,o,s=e((()=>{a=`_root_43uio_1`,o={root:a}})),c,l;e((()=>{r(),i(),s(),c=t(),l=()=>(0,c.jsx)(`div`,{className:o.root,children:(0,c.jsx)(n,{})})}))();export{l as default};
