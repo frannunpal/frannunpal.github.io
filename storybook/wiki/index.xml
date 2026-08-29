@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<rss version="2.0">
+    <channel>
+      <title>FDE Desktop Wiki</title>
+      <link>https://frannunpal.github.io/wiki</link>
+      <description>Last 10 notes on FDE Desktop Wiki</description>
+      <generator>Quartz -- quartz.jzhao.xyz</generator>
+      <item>
+    <title>index</title>
+    <link>https://frannunpal.github.io/wiki/</link>
+    <guid>https://frannunpal.github.io/wiki/</guid>
+    <description><![CDATA[ Wiki Index Content catalog. Each listed page with one-line summary. Read first to find relevant pages. ]]></description>
+    <pubDate>Sat, 29 Aug 2026 13:24:32 GMT</pubDate>
+  </item><item>
+    <title>log</title>
+    <link>https://frannunpal.github.io/wiki/log</link>
+    <guid>https://frannunpal.github.io/wiki/log</guid>
+    <description><![CDATA[ Wiki Log Change history and updates to the wiki. ]]></description>
+    <pubDate>Sat, 29 Aug 2026 13:24:32 GMT</pubDate>
+  </item><item>
+    <title>context-menu</title>
+    <link>https://frannunpal.github.io/wiki/entities/context-menu</link>
+    <guid>https://frannunpal.github.io/wiki/entities/context-menu</guid>
+    <description><![CDATA[ Context Menu — Desktop The desktop context menu (right-click on the desktop background) provides quick access to apps and actions. ]]></description>
+    <pubDate>Sat, 29 Aug 2026 13:24:32 GMT</pubDate>
+  </item><item>
+    <title>worker</title>
+    <link>https://frannunpal.github.io/wiki/concepts/worker</link>
+    <guid>https://frannunpal.github.io/wiki/concepts/worker</guid>
+    <description><![CDATA[ Cities — Web Worker Architecture This document describes the Web Worker implementation for city generation. ]]></description>
+    <pubDate>Sat, 29 Aug 2026 13:24:32 GMT</pubDate>
+  </item><item>
+    <title>idea</title>
+    <link>https://frannunpal.github.io/wiki/concepts/idea</link>
+    <guid>https://frannunpal.github.io/wiki/concepts/idea</guid>
+    <description><![CDATA[ Cities — La Idea La premisa Escribes el nombre de una ciudad. La ciudad aparece. No hay configuración, no hay datos externos, no hay API. ]]></description>
+    <pubDate>Sat, 29 Aug 2026 13:24:32 GMT</pubDate>
+  </item><item>
+    <title>fde-2-license-and-cli</title>
+    <link>https://frannunpal.github.io/wiki/concepts/fde-2-license-and-cli</link>
+    <guid>https://frannunpal.github.io/wiki/concepts/fde-2-license-and-cli</guid>
+    <description><![CDATA[ License Key System &amp; create-fde-app CLI — Architecture FDE-2 implementation. ]]></description>
+    <pubDate>Sat, 29 Aug 2026 13:24:32 GMT</pubDate>
+  </item><item>
+    <title>3d-rendering</title>
+    <link>https://frannunpal.github.io/wiki/_archive/concepts/3d-rendering</link>
+    <guid>https://frannunpal.github.io/wiki/_archive/concepts/3d-rendering</guid>
+    <description><![CDATA[ Cities — 3D Rendering Documentación del sistema de renderizado 3D (MapCanvas3D) y los builders de geometría. ]]></description>
+    <pubDate>Sat, 29 Aug 2026 13:24:32 GMT</pubDate>
+  </item><item>
+    <title>TheatreEditor</title>
+    <link>https://frannunpal.github.io/wiki/_archive/concepts/TheatreEditor</link>
+    <guid>https://frannunpal.github.io/wiki/_archive/concepts/TheatreEditor</guid>
+    <description><![CDATA[ TheatreEditor - Integration Documentation Theatre.js visual editor integration for real-time lighting parameter editing in DEV mode. ]]></description>
+    <pubDate>Sat, 29 Aug 2026 13:24:32 GMT</pubDate>
+  </item><item>
+    <title>scenedebugger</title>
+    <link>https://frannunpal.github.io/wiki/_archive/entities/scenedebugger</link>
+    <guid>https://frannunpal.github.io/wiki/_archive/entities/scenedebugger</guid>
+    <description><![CDATA[ SceneDebugger Needle Inspector-style devtools panel for the Cities 3D view. Activated by the “Editor” toggle (dev-only). ]]></description>
+    <pubDate>Sat, 29 Aug 2026 13:24:32 GMT</pubDate>
+  </item><item>
+    <title>SCHEMA</title>
+    <link>https://frannunpal.github.io/wiki/SCHEMA</link>
+    <guid>https://frannunpal.github.io/wiki/SCHEMA</guid>
+    <description><![CDATA[ Wiki Schema Domain This wiki documents fde-desktop — a web desktop environment with hexagonal architecture, React 19, TypeScript and TanStack. ]]></description>
+    <pubDate>Sat, 29 Aug 2026 13:24:32 GMT</pubDate>
+  </item>
+    </channel>
+  </rss>
